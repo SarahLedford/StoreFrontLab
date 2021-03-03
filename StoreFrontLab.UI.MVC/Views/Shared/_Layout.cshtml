@@ -1,49 +1,229 @@
 ﻿<!DOCTYPE html>
-<html>
+<html lang="zxx">
 <head>
-    <meta charset="utf-8" />
+    <meta charset="UTF-8">
+    <meta name="description" content="A vintage media store to supply all of your VHS, LaserDisc, cassette tape, and vinyl records needs.">
+    <meta name="keywords" content="VHS, record, vinyl, cassette, tape, laserdisc, movie, music">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
-
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>@ViewBag.Title | Vintage Media Shop</title>
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&display=swap"
+          rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap"
+          rel="stylesheet">
+    <!-- Css Styles -->
+    <link rel="stylesheet" href="~/Content/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="~/Content/css/flaticon.css" type="text/css">
+    <link rel="stylesheet" href="~/Content/css/barfiller.css" type="text/css">
+    <link rel="stylesheet" href="~/Content/css/magnific-popup.css" type="text/css">
+    <link rel="stylesheet" href="~/Content/css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="~/Content/css/elegant-icons.css" type="text/css">
+    <link rel="stylesheet" href="~/Content/css/nice-select.css" type="text/css">
+    <link rel="stylesheet" href="~/Content/css/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="~/Content/css/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="~/Content/css/style.css" type="text/css">
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", null, new { @class = "navbar-brand" })
+    <!-- Page Preloder -->
+    <div id="preloder">
+        <div class="loader"></div>
+    </div>
+    <!-- Offcanvas Menu Begin -->
+    <div class="offcanvas-menu-overlay"></div>
+    <div class="offcanvas-menu-wrapper">
+        <div class="offcanvas__cart">
+            <div class="offcanvas__cart__links">
+                <a href="#" class="search-switch"><img src="~/Content/img/icon/search.png" alt=""></a>
+                <a href="#"><img src="~/Content/img/icon/heart.png" alt=""></a>
             </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+            <div class="offcanvas__cart__item">
+                <a href="#"><img src="~/Content/img/icon/cart.png" alt=""> <span>0</span></a>
+                <div class="cart__price">Cart: <span>$0.00</span></div>
+            </div>
+        </div>
+        <div class="offcanvas__logo">
+            <a href="@Url.Action("Index","Home")"><img src="~/Content/img/logo.png" alt=""></a>
+        </div>
+        <div id="mobile-menu-wrap"></div>
+        <div class="offcanvas__option">
+            <ul>
+                <li>
+                    USD <span class="arrow_carrot-down"></span>
+                    <ul>
+                        <li>EUR</li>
+                        <li>USD</li>
+                    </ul>
+                </li>
+                <li>
+                    ENG <span class="arrow_carrot-down"></span>
+                    <ul>
+                        <li>Spanish</li>
+                        <li>ENG</li>
+                    </ul>
+                </li>
+                <li><a href="#">Sign in</a> <span class="arrow_carrot-down"></span></li>
+            </ul>
+        </div>
+    </div>
+    <!-- Offcanvas Menu End -->
+    <!-- Header Section Begin -->
+    <header class="header">
+        <div class="header__top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="header__top__inner">
+                            <div class="header__top__left">
+                                <ul>
+                                    <li>
+                                        USD <span class="arrow_carrot-down"></span>
+                                        <ul>
+                                            <li>EUR</li>
+                                            <li>USD</li>
+                                        </ul>
+                                    </li>
+                                    @*<li>
+                                            ENG <span class="arrow_carrot-down"></span>
+                                            <ul>
+                                                <li>Spanish</li>
+                                                <li>ENG</li>
+                                            </ul>
+                                        </li>*@
+                                    <li><a href="#">Sign in</a> <span class="arrow_carrot-down"></span></li>
+                                </ul>
+                            </div>
+                            <div class="header__logo">
+                                <a href="@Url.Action("Index", "Home")"><img src="~/Content/img/logo.png" alt=""></a>
+                            </div>
+                            <div class="header__top__right">
+                                <div class="header__top__right__links">
+                                    <a href="#" class="search-switch"><img src="~/Content/img/icon/search.png" alt=""></a>
+                                    @*<a href="#"><img src="~/Content/img/icon/heart.png" alt=""></a>*@
+                                </div>
+                                <div class="header__top__right__cart">
+                                    <a href="#"><img src="~/Content/img/icon/cart.png" alt=""> <span>0</span></a>
+                                    <div class="cart__price">Cart: <span>$0.00</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="canvas__open"><i class="fa fa-bars"></i></div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <nav class="header__menu mobile-menu">
+                        <ul>
+                            <li @*class="active"*@><a href="@Url.Action("Index","Home")">Home</a></li>
+                            <li><a href="@Url.Action("About","Home")">About</a></li>
+                            <li><a href="#">Shop</a></li>
+                            @*<li>
+                                    <a href="#">Pages</a>
+                                    <ul class="dropdown">
+                                        <li><a href="./shop-details.html">Shop Details</a></li>
+                                        <li><a href="./shoping-cart.html">Shoping Cart</a></li>
+                                        <li><a href="./checkout.html">Check Out</a></li>
+                                        <li><a href="./wisslist.html">Wisslist</a></li>
+                                        <li><a href="./Class.html">Class</a></li>
+                                        <li><a href="./blog-details.html">Blog Details</a></li>
+                                    </ul>
+                                </li>*@
+                            @*<li><a href="./blog.html">Blog</a></li>*@
+                            <li><a href="@Url.Action("Contact","Home")">Contact</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Header Section End -->
+    <!-- Hero Section Begin -->
+    <section class="hero">
+        <div class="hero__slider owl-carousel">
+            <div class="hero__item set-bg" data-setbg="@Url.Content("~/Content/img/hero/hero-1.jpg")">
+                <div class="container">
+                    <div class="row d-flex justify-content-center">
+                        <div class="col-lg-8">
+                            <div class="hero__text">
+                                <h2>Making your life sweeter one bite at a time!</h2>
+                                <a href="#" class="primary-btn">Our cakes</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="hero__item set-bg" data-setbg="@Url.Content("~/Content/img/hero/hero-1.jpg")">
+                <div class="container">
+                    <div class="row d-flex justify-content-center">
+                        <div class="col-lg-8">
+                            <div class="hero__text">
+                                <h2>Making your life sweeter one bite at a time!</h2>
+                                <a href="#" class="primary-btn">Our cakes</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Hero Section End -->
 
-                    @if (Request.IsAuthenticated && User.IsInRole("Admin")) {
-                        <li>@Html.ActionLink("RolesAdmin", "Index", "RolesAdmin")</li>
-                        <li>@Html.ActionLink("UsersAdmin", "Index", "UsersAdmin")</li>
-                    }
-                </ul>
-                @Html.Partial("_LoginPartial")
+    <div id="mainContent">
+        @RenderBody()
+    </div>
+
+    <!-- Footer Section Begin -->
+
+    <div class="copyright">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-7">
+                    <p class="copyright__text text-white">
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                        Copyright &copy;
+                        <script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                    </p>
+                </div>
             </div>
         </div>
     </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
+    <!-- Footer Section End -->
+    <!-- Search Begin -->
+    <div class="search-model">
+        <div class="h-100 d-flex align-items-center justify-content-center">
+            <div class="search-close-switch">+</div>
+            <form class="search-model-form">
+                <input type="text" id="search-input" placeholder="Search here...">
+            </form>
+        </div>
     </div>
+    <!-- Search End -->
+    <!-- Js Plugins -->
+    <script src="~/Content/js/jquery-3.3.1.min.js"></script>
+    <script src="~/Content/js/bootstrap.min.js"></script>
+    <script src="~/Content/js/jquery.nice-select.min.js"></script>
+    <script src="~/Content/js/jquery.barfiller.js"></script>
+    <script src="~/Content/js/jquery.magnific-popup.min.js"></script>
+    <script src="~/Content/js/jquery.slicknav.js"></script>
+    <script src="~/Content/js/owl.carousel.min.js"></script>
+    <script src="~/Content/js/jquery.nicescroll.min.js"></script>
+    <script src="~/Content/js/main.js"></script>
+
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+    <script>
+        //Highlight Selected Nav
+        $('.header__menu ul li').each(function () {
+            if ($(this).find('a').attr('href') == window.location.pathname) {
+                $(this).addClass('active');
+            }
+        });
+    </script>
 </body>
 </html>
