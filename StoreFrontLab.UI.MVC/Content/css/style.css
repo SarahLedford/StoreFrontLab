@@ -333,14 +333,15 @@ ol {
   position: relative;
   padding: 2px 0;
   cursor: pointer;
+  font-weight:bold;
 }
 .header__top__left ul li a {
   color: #111111;
 }
-.header__top__left ul li:hover ul {
-  top: 24px;
+.header__top__left ul li:hover{
   opacity: 1;
   visibility: visible;
+  text-decoration:underline;
 }
 .header__top__left ul li ul {
   background: #111111;
@@ -366,14 +367,14 @@ ol {
 .header__top__left ul li ul li:after {
   display: none;
 }
-.header__top__left ul li:after {
+/*.header__top__left ul li:after {
   position: absolute;
   right: -19px;
   top: 1px;
   content: "|";
   color: #bbbbbb;
-}
-.header__top__left ul li:last-child {
+}*/
+/*.header__top__left ul li:last-child {
   margin-right: 0;
 }
 .header__top__left ul li:last-child:after {
@@ -381,7 +382,7 @@ ol {
 }
 .header__top__left ul li span {
   color: #888888;
-}
+}*/
 
 .header__logo {
   position: absolute;

@@ -23,7 +23,7 @@
     <link rel="stylesheet" href="~/Content/css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="~/Content/css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="~/Content/css/style.css" type="text/css">
-    <link rel="stylesheet" href="~/Content/css/_custom.css" type="text/css"/>
+    <link rel="stylesheet" href="~/Content/css/_custom.css" type="text/css" />
 </head>
 <body>
     <!-- Page Preloder -->
@@ -77,21 +77,16 @@
                         <div class="header__top__inner">
                             <div class="header__top__left">
                                 <ul>
-                                    <li>
+                                    @*<li>
                                         USD <span class="arrow_carrot-down"></span>
                                         <ul>
                                             <li>EUR</li>
                                             <li>USD</li>
                                         </ul>
-                                    </li>
-                                    @*<li>
-                                            ENG <span class="arrow_carrot-down"></span>
-                                            <ul>
-                                                <li>Spanish</li>
-                                                <li>ENG</li>
-                                            </ul>
-                                        </li>*@
-                                    <li><a href="#">Sign in</a> <span class="arrow_carrot-down"></span></li>
+                                    </li>*@
+                                 
+                                    
+                                    @Html.Partial("_LoginPartial")
                                 </ul>
                             </div>
                             <div class="header__logo">
@@ -106,7 +101,7 @@
                                     <a href="#"><img src="~/Content/img/icon/cart.png" alt=""> <span>0</span></a>
                                     <div class="cart__price">Cart: <span>$0.00</span></div>
                                 </div>
-                                @Html.Partial("_LoginPartial")
+
 
                             </div>
                         </div>
@@ -124,16 +119,16 @@
                             <li><a href="@Url.Action("About","Home")">About</a></li>
                             <li><a href="#">Shop</a></li>
                             @*<li>
-            <a href="#">Pages</a>
-            <ul class="dropdown">
-                <li><a href="./shop-details.html">Shop Details</a></li>
-                <li><a href="./shoping-cart.html">Shoping Cart</a></li>
-                <li><a href="./checkout.html">Check Out</a></li>
-                <li><a href="./wisslist.html">Wisslist</a></li>
-                <li><a href="./Class.html">Class</a></li>
-                <li><a href="./blog-details.html">Blog Details</a></li>
-            </ul>
-        </li>*@
+                                    <a href="#">Pages</a>
+                                    <ul class="dropdown">
+                                        <li><a href="./shop-details.html">Shop Details</a></li>
+                                        <li><a href="./shoping-cart.html">Shoping Cart</a></li>
+                                        <li><a href="./checkout.html">Check Out</a></li>
+                                        <li><a href="./wisslist.html">Wisslist</a></li>
+                                        <li><a href="./Class.html">Class</a></li>
+                                        <li><a href="./blog-details.html">Blog Details</a></li>
+                                    </ul>
+                                </li>*@
                             @*<li><a href="./blog.html">Blog</a></li>*@
                             <li><a href="@Url.Action("Contact","Home")">Contact</a></li>
                             @if (Request.IsAuthenticated && User.IsInRole("Admin"))
