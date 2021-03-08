@@ -1,0 +1,12 @@
+﻿body {
+}
+
+
+textarea{
+    min-height: 10em;
+    resize: none;
+}
+
+.hero__section{
+    margin-bottom:.5em;
+}
