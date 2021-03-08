@@ -106,6 +106,8 @@
                                     <a href="#"><img src="~/Content/img/icon/cart.png" alt=""> <span>0</span></a>
                                     <div class="cart__price">Cart: <span>$0.00</span></div>
                                 </div>
+                                @Html.Partial("_LoginPartial")
+
                             </div>
                         </div>
                     </div>
@@ -122,18 +124,23 @@
                             <li><a href="@Url.Action("About","Home")">About</a></li>
                             <li><a href="#">Shop</a></li>
                             @*<li>
-                                    <a href="#">Pages</a>
-                                    <ul class="dropdown">
-                                        <li><a href="./shop-details.html">Shop Details</a></li>
-                                        <li><a href="./shoping-cart.html">Shoping Cart</a></li>
-                                        <li><a href="./checkout.html">Check Out</a></li>
-                                        <li><a href="./wisslist.html">Wisslist</a></li>
-                                        <li><a href="./Class.html">Class</a></li>
-                                        <li><a href="./blog-details.html">Blog Details</a></li>
-                                    </ul>
-                                </li>*@
+            <a href="#">Pages</a>
+            <ul class="dropdown">
+                <li><a href="./shop-details.html">Shop Details</a></li>
+                <li><a href="./shoping-cart.html">Shoping Cart</a></li>
+                <li><a href="./checkout.html">Check Out</a></li>
+                <li><a href="./wisslist.html">Wisslist</a></li>
+                <li><a href="./Class.html">Class</a></li>
+                <li><a href="./blog-details.html">Blog Details</a></li>
+            </ul>
+        </li>*@
                             @*<li><a href="./blog.html">Blog</a></li>*@
                             <li><a href="@Url.Action("Contact","Home")">Contact</a></li>
+                            @if (Request.IsAuthenticated && User.IsInRole("Admin"))
+                            {
+                                <li>@Html.ActionLink("RolesAdmin", "Index", "RolesAdmin")</li>
+                                <li>@Html.ActionLink("UsersAdmin", "Index", "UsersAdmin")</li>
+                            }
                         </ul>
                     </nav>
                 </div>
