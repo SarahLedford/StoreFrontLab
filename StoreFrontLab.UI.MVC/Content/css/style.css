@@ -385,10 +385,12 @@ ol {
 }*/
 
 .header__logo {
-  position: absolute;
-  left: 50%;
-  top: 25px;
-  margin-left: -60px;
+    position: absolute;
+    left: 44%;
+    top: -27px;
+    margin-left: -60px;
+    width: 45em;
+    height: auto;
 }
 .header__logo a {
   display: inline-block;
@@ -632,7 +634,7 @@ ol {
   transition: all, 0.3s;
   height: 194px;
   width: 194px;
-  padding-top: 25px;
+  padding-top: 4px;
   position: relative;
 }
 .categories__item:after {
@@ -1246,7 +1248,7 @@ ol {
 .copyright {
   background: #000000;
   padding: 18px 0 14px;
-  margin-top: 40px;
+  margin-top: 46px;
 }
 
 .copyright__text {

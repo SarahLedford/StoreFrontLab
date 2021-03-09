@@ -206,7 +206,9 @@
     <Content Include="Content\fonts\ElegantIcons.svg" />
     <Content Include="Content\fonts\Flaticon.svg" />
     <Content Include="Content\fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\img\88f6b6cd14a44144a3ebfecedec84f3e.png" />
     <Content Include="Content\img\about-video.jpg" />
+    <Content Include="Content\img\All.png" />
     <Content Include="Content\img\blog\blog-1.jpg" />
     <Content Include="Content\img\blog\blog-2.jpg" />
     <Content Include="Content\img\blog\blog-3.jpg" />
@@ -225,6 +227,7 @@
     <Content Include="Content\img\blog\details\comment-3.jpg" />
     <Content Include="Content\img\blog\details\user.png" />
     <Content Include="Content\img\cake-piece.png" />
+    <Content Include="Content\img\Cassette.png" />
     <Content Include="Content\img\class-video.jpg" />
     <Content Include="Content\img\class\class-1.jpg" />
     <Content Include="Content\img\class\class-2.jpg" />
@@ -235,6 +238,8 @@
     <Content Include="Content\img\footer-bg.jpg" />
     <Content Include="Content\img\footer-logo.png" />
     <Content Include="Content\img\hero\hero-1.jpg" />
+    <Content Include="Content\img\hero\HeroBgd.jpg" />
+    <Content Include="Content\img\hero\heroVCR.jpg" />
     <Content Include="Content\img\icon\cart.png" />
     <Content Include="Content\img\icon\heart.png" />
     <Content Include="Content\img\icon\search.png" />
@@ -244,7 +249,9 @@
     <Content Include="Content\img\instagram\instagram-3.jpg" />
     <Content Include="Content\img\instagram\instagram-4.jpg" />
     <Content Include="Content\img\instagram\instagram-5.jpg" />
+    <Content Include="Content\img\Laserdisc.png" />
     <Content Include="Content\img\logo.png" />
+    <Content Include="Content\img\Record.png" />
     <Content Include="Content\img\shop\cart\cart-1.jpg" />
     <Content Include="Content\img\shop\cart\cart-2.jpg" />
     <Content Include="Content\img\shop\cart\cart-3.jpg" />
@@ -277,6 +284,8 @@
     <Content Include="Content\img\team\team-4.jpg" />
     <Content Include="Content\img\testimonial\ta-1.jpg" />
     <Content Include="Content\img\testimonial\ta-2.jpg" />
+    <Content Include="Content\img\VHStape.png" />
+    <Content Include="Content\img\VHStapeNEW.png" />
     <Content Include="Content\js\bootstrap.min.js" />
     <Content Include="Content\js\jquery-3.3.1.min.js" />
     <Content Include="Content\js\jquery.barfiller.js" />

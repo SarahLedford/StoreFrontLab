@@ -1,28 +1,30 @@
 ﻿@{
     ViewBag.Title = "Home Page";
 }
+
 <!-- Hero Section Begin -->
 <section class="hero">
     <div class="hero__slider owl-carousel">
-        <div class="hero__item set-bg" data-setbg="@Url.Content("~/Content/img/hero/hero-1.jpg")">
+        <div class="hero__item set-bg" data-setbg="@Url.Content("~/Content/img/hero/HeroBgd.jpg")">
+            <!-- <span>Photo by <a href="https://unsplash.com/@@blocks?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">blocks</a> on <a href="https://unsplash.com/s/photos/records?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></span>-->
             <div class="container">
                 <div class="row d-flex justify-content-center">
                     <div class="col-lg-8">
                         <div class="hero__text">
-                            <h2>Making your life sweeter one bite at a time!</h2>
-                            <a href="#" class="primary-btn">Our cakes</a>
+                            <h2>All of your favorite vinyls in one place</h2>
+                            <a href="#" class="primary-btn">Check it out</a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="hero__item set-bg" data-setbg="@Url.Content("~/Content/img/hero/hero-1.jpg")">
+        <div class="hero__item set-bg" data-setbg="@Url.Content("~/Content/img/hero/heroVCR.jpg")">
             <div class="container">
                 <div class="row d-flex justify-content-center">
                     <div class="col-lg-8">
                         <div class="hero__text">
-                            <h2>Making your life sweeter one bite at a time!</h2>
-                            <a href="#" class="primary-btn">Our cakes</a>
+                            <h2>Step into a time machine with one of your favorite classic films</h2>
+                            <a href="#" class="primary-btn">Check it out</a>
                         </div>
                     </div>
                 </div>
@@ -38,12 +40,11 @@
             <div class="col-lg-6 col-md-6">
                 <div class="about__text">
                     <div class="section-title">
-                        <span>About Cake shop</span>
-                        <h2>Cakes and bakes from the house of Queens!</h2>
+                        <span>Old School</span>
+                        <h2>Your one-stop-shop for all vintage media!</h2>
                     </div>
                     <p>
-                        The "Cake Shop" is a Jordanian Brand that started as a small family business. The owners are
-                        Dr. Iyad Sultan and Dr. Sereen Sharabati, supported by a staff of 80 employees.
+                        With a selection that remains unmatched, come and stock up on all of your favorite records, VHS tapes, cassetes, and laserdiscs.
                     </p>
                 </div>
             </div>
@@ -61,40 +62,59 @@
             <div class="categories__slider owl-carousel">
                 <div class="categories__item">
                     <div class="categories__item__icon">
-                        <span class="flaticon-029-cupcake-3"></span>
-                        <h5>Cupcake</h5>
+                        <img src="~/Content/img/All.png" />
                     </div>
                 </div>
                 <div class="categories__item">
                     <div class="categories__item__icon">
-                        <span class="flaticon-034-chocolate-roll"></span>
-                        <h5>Butter</h5>
+                        <img src="~/Content/img/VHStapeNEW.png" />
                     </div>
                 </div>
                 <div class="categories__item">
                     <div class="categories__item__icon">
-                        <span class="flaticon-005-pancake"></span>
-                        <h5>Red Velvet</h5>
+                        <img src="~/Content/img/Record.png" />
                     </div>
                 </div>
                 <div class="categories__item">
                     <div class="categories__item__icon">
-                        <span class="flaticon-030-cupcake-2"></span>
-                        <h5>Biscuit</h5>
+                        <img src="~/Content/img/Cassette.png" />
                     </div>
                 </div>
                 <div class="categories__item">
                     <div class="categories__item__icon">
-                        <span class="flaticon-006-macarons"></span>
-                        <h5>Donut</h5>
+                        <img src="~/Content/img/Laserdisc.png" />
                     </div>
                 </div>
-                <div class="categories__item">
-                    <div class="categories__item__icon">
-                        <span class="flaticon-006-macarons"></span>
-                        <h5>Cupcake</h5>
-                    </div>
-                </div>
+                @*<div class="categories__item">
+            <div class="categories__item__icon">
+                <span class="flaticon-034-chocolate-roll"></span>
+                <h5>Butter</h5>
+            </div>
+        </div>
+        <div class="categories__item">
+            <div class="categories__item__icon">
+                <span class="flaticon-005-pancake"></span>
+                <h5>Red Velvet</h5>
+            </div>
+        </div>
+        <div class="categories__item">
+            <div class="categories__item__icon">
+                <span class="flaticon-030-cupcake-2"></span>
+                <h5>Biscuit</h5>
+            </div>
+        </div>
+        <div class="categories__item">
+            <div class="categories__item__icon">
+                <span class="flaticon-006-macarons"></span>
+                <h5>Donut</h5>
+            </div>
+        </div>
+        <div class="categories__item">
+            <div class="categories__item__icon">
+                <span class="flaticon-006-macarons"></span>
+                <h5>Cupcake</h5>
+            </div>
+        </div>*@
             </div>
         </div>
     </div>
@@ -108,7 +128,7 @@
                 <div class="product__item">
                     <div class="product__item__pic set-bg" data-setbg="@Url.Content("~/Content/img/shop/product-1.jpg")">
                         <div class="product__label">
-                            <span>Cupcake</span>
+                            <span>VHS</span>
                         </div>
                     </div>
                     <div class="product__item__text">
@@ -124,7 +144,7 @@
                 <div class="product__item">
                     <div class="product__item__pic set-bg" data-setbg="@Url.Content("~/Content/img/shop/product-2.jpg")">
                         <div class="product__label">
-                            <span>Cupcake</span>
+                            <span>VHS</span>
                         </div>
                     </div>
                     <div class="product__item__text">
@@ -140,7 +160,7 @@
                 <div class="product__item">
                     <div class="product__item__pic set-bg" data-setbg="@Url.Content("~/Content/img/shop/product-3.jpg")">
                         <div class="product__label">
-                            <span>Cupcake</span>
+                            <span>LaserDisc</span>
                         </div>
                     </div>
                     <div class="product__item__text">
@@ -156,7 +176,7 @@
                 <div class="product__item">
                     <div class="product__item__pic set-bg" data-setbg="@Url.Content("~/Content/img/shop/product-4.jpg")">
                         <div class="product__label">
-                            <span>Cupcake</span>
+                            <span>Record</span>
                         </div>
                     </div>
                     <div class="product__item__text">
@@ -172,7 +192,7 @@
                 <div class="product__item">
                     <div class="product__item__pic set-bg" data-setbg="@Url.Content("~/Content/img/shop/product-5.jpg")">
                         <div class="product__label">
-                            <span>Cupcake</span>
+                            <span>Record</span>
                         </div>
                     </div>
                     <div class="product__item__text">
@@ -188,7 +208,7 @@
                 <div class="product__item">
                     <div class="product__item__pic set-bg" data-setbg="@Url.Content("~/Content/img/shop/product-6.jpg")">
                         <div class="product__label">
-                            <span>Cupcake</span>
+                            <span>Cassette</span>
                         </div>
                     </div>
                     <div class="product__item__text">
@@ -204,7 +224,7 @@
                 <div class="product__item">
                     <div class="product__item__pic set-bg" data-setbg="@Url.Content("~/Content/img/shop/product-7.jpg")">
                         <div class="product__label">
-                            <span>Cupcake</span>
+                            <span>VHS</span>
                         </div>
                     </div>
                     <div class="product__item__text">
@@ -220,7 +240,7 @@
                 <div class="product__item">
                     <div class="product__item__pic set-bg" data-setbg="@Url.Content("~/Content/img/shop/product-8.jpg")">
                         <div class="product__label">
-                            <span>Cupcake</span>
+                            <span>Cassette</span>
                         </div>
                     </div>
                     <div class="product__item__text">
@@ -236,165 +256,3 @@
     </div>
 </section>
 <!-- Product Section End -->
-<!-- Testimonial Section Begin -->
-<section class="testimonial spad">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12 text-center">
-                <div class="section-title">
-                    <span>Testimonial</span>
-                    <h2>Our client say</h2>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="testimonial__slider owl-carousel">
-                <div class="col-lg-6">
-                    <div class="testimonial__item">
-                        <div class="testimonial__author">
-                            <div class="testimonial__author__pic">
-                                <img src="~/Content/img/testimonial/ta-1.jpg" alt="">
-                            </div>
-                            <div class="testimonial__author__text">
-                                <h5>Kerry D.Silva</h5>
-                                <span>New york</span>
-                            </div>
-                        </div>
-                        <div class="rating">
-                            <span class="icon_star"></span>
-                            <span class="icon_star"></span>
-                            <span class="icon_star"></span>
-                            <span class="icon_star"></span>
-                            <span class="icon_star-half_alt"></span>
-                        </div>
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                            ut labore et dolore magna aliqua viverra lacus vel facilisis.
-                        </p>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="testimonial__item">
-                        <div class="testimonial__author">
-                            <div class="testimonial__author__pic">
-                                <img src="~/Content/img/testimonial/ta-2.jpg" alt="">
-                            </div>
-                            <div class="testimonial__author__text">
-                                <h5>Kerry D.Silva</h5>
-                                <span>New york</span>
-                            </div>
-                        </div>
-                        <div class="rating">
-                            <span class="icon_star"></span>
-                            <span class="icon_star"></span>
-                            <span class="icon_star"></span>
-                            <span class="icon_star"></span>
-                            <span class="icon_star-half_alt"></span>
-                        </div>
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                            ut labore et dolore magna aliqua viverra lacus vel facilisis.
-                        </p>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="testimonial__item">
-                        <div class="testimonial__author">
-                            <div class="testimonial__author__pic">
-                                <img src="~/Content/img/testimonial/ta-1.jpg" alt="">
-                            </div>
-                            <div class="testimonial__author__text">
-                                <h5>Ophelia Nunez</h5>
-                                <span>London</span>
-                            </div>
-                        </div>
-                        <div class="rating">
-                            <span class="icon_star"></span>
-                            <span class="icon_star"></span>
-                            <span class="icon_star"></span>
-                            <span class="icon_star"></span>
-                            <span class="icon_star-half_alt"></span>
-                        </div>
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                            ut labore et dolore magna aliqua viverra lacus vel facilisis.
-                        </p>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="testimonial__item">
-                        <div class="testimonial__author">
-                            <div class="testimonial__author__pic">
-                                <img src="~/Content/img/testimonial/ta-2.jpg" alt="">
-                            </div>
-                            <div class="testimonial__author__text">
-                                <h5>Kerry D.Silva</h5>
-                                <span>New york</span>
-                            </div>
-                        </div>
-                        <div class="rating">
-                            <span class="icon_star"></span>
-                            <span class="icon_star"></span>
-                            <span class="icon_star"></span>
-                            <span class="icon_star"></span>
-                            <span class="icon_star-half_alt"></span>
-                        </div>
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                            ut labore et dolore magna aliqua viverra lacus vel facilisis.
-                        </p>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="testimonial__item">
-                        <div class="testimonial__author">
-                            <div class="testimonial__author__pic">
-                                <img src="~/Content/img/testimonial/ta-1.jpg" alt="">
-                            </div>
-                            <div class="testimonial__author__text">
-                                <h5>Ophelia Nunez</h5>
-                                <span>London</span>
-                            </div>
-                        </div>
-                        <div class="rating">
-                            <span class="icon_star"></span>
-                            <span class="icon_star"></span>
-                            <span class="icon_star"></span>
-                            <span class="icon_star"></span>
-                            <span class="icon_star-half_alt"></span>
-                        </div>
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                            ut labore et dolore magna aliqua viverra lacus vel facilisis.
-                        </p>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="testimonial__item">
-                        <div class="testimonial__author">
-                            <div class="testimonial__author__pic">
-                                <img src="~/Content/img/testimonial/ta-2.jpg" alt="">
-                            </div>
-                            <div class="testimonial__author__text">
-                                <h5>Kerry D.Silva</h5>
-                                <span>New york</span>
-                            </div>
-                        </div>
-                        <div class="rating">
-                            <span class="icon_star"></span>
-                            <span class="icon_star"></span>
-                            <span class="icon_star"></span>
-                            <span class="icon_star"></span>
-                            <span class="icon_star-half_alt"></span>
-                        </div>
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                            ut labore et dolore magna aliqua viverra lacus vel facilisis.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- Testimonial Section End -->
