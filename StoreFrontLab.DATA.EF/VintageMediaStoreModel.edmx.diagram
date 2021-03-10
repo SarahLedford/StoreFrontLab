@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="05585f252f5f4e7395397de067b5be21" Name="Diagram1">
+        <EntityTypeShape EntityType="VintageMediaStoreModel.Artist" Width="1.5" PointX="0.75" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="VintageMediaStoreModel.Category" Width="1.5" PointX="0.75" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="VintageMediaStoreModel.MovieGenre" Width="1.5" PointX="0.75" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="VintageMediaStoreModel.MusicGenre" Width="1.5" PointX="0.75" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="VintageMediaStoreModel.Product" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="VintageMediaStoreModel.Status" Width="1.5" PointX="0.75" PointY="12.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="VintageMediaStoreModel.Studio" Width="1.5" PointX="0.75" PointY="14.875" IsExpanded="true" />
+        <AssociationConnector Association="VintageMediaStoreModel.FK_Products_Artists" ManuallyRouted="false" />
+        <AssociationConnector Association="VintageMediaStoreModel.FK_Products_Categories" ManuallyRouted="false" />
+        <AssociationConnector Association="VintageMediaStoreModel.FK_Products_MovieGenres" ManuallyRouted="false" />
+        <AssociationConnector Association="VintageMediaStoreModel.FK_Products_MusicGenres" ManuallyRouted="false" />
+        <AssociationConnector Association="VintageMediaStoreModel.FK_Products_Statuses" ManuallyRouted="false" />
+        <AssociationConnector Association="VintageMediaStoreModel.FK_Products_Studios" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
