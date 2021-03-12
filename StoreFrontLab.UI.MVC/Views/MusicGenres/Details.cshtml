@@ -1,0 +1,25 @@
+﻿@model StoreFrontLab.DATA.EF.MusicGenre
+
+@{
+    ViewBag.Title = "Music Genre Details";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.MusicGenreName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MusicGenreName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.MusicGenreID }) |
+    @Html.ActionLink("Back to Music Genres", "Index")
+</p>

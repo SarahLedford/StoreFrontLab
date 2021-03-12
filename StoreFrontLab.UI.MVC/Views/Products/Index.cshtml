@@ -1,0 +1,87 @@
+﻿@model IEnumerable<StoreFrontLab.DATA.EF.Product>
+
+@{
+    ViewBag.Title = "Shop";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<p>
+    @Html.ActionLink("Add a New Product", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ProdName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductImage)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Artist.ArtistName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Category.CategoryName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MovieGenre.MovieGenreName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MusicGenre.MusicGenreName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status.StatusName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Studio.StudioName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProdName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Price)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProductImage)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Artist.ArtistName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Category.CategoryName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MovieGenre.MovieGenreName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MusicGenre.MusicGenreName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Status.StatusName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Studio.StudioName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ProdID }) |
+            @Html.ActionLink("More Info", "Details", new { id=item.ProdID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ProdID })
+        </td>
+    </tr>
+}
+
+</table>

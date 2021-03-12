@@ -94,7 +94,7 @@ a:hover,
 a:focus {
   text-decoration: none;
   outline: none;
-  color: #ffffff;
+  color: coral;
 }
 
 ul,
@@ -1248,7 +1248,7 @@ ol {
 .copyright {
   background: #000000;
   padding: 18px 0 14px;
-  margin-top: 46px;
+  margin-top: 16.1em;
 }
 
 .copyright__text {

@@ -1,0 +1,33 @@
+﻿@model IEnumerable<StoreFrontLab.DATA.EF.MovieGenre>
+
+@{
+    ViewBag.Title = "Movie Genres";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<p>
+    @Html.ActionLink("Add Another Genre", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.MovieGenreName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.MovieGenreName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.MovieGenreID }) |
+            @Html.ActionLink("More Info", "Details", new { id=item.MovieGenreID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.MovieGenreID })
+        </td>
+    </tr>
+}
+
+</table>

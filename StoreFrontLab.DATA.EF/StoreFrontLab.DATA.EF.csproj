@@ -56,6 +56,7 @@
     <Compile Include="Category.cs">
       <DependentUpon>VintageMediaStoreModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Metadata\VintageMediaStoreMetadata.cs" />
     <Compile Include="MovieGenre.cs">
       <DependentUpon>VintageMediaStoreModel.tt</DependentUpon>
     </Compile>

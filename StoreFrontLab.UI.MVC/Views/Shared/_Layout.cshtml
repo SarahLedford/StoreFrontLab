@@ -78,14 +78,14 @@
                             <div class="header__top__left">
                                 <ul>
                                     @*<li>
-                                        USD <span class="arrow_carrot-down"></span>
-                                        <ul>
-                                            <li>EUR</li>
-                                            <li>USD</li>
-                                        </ul>
-                                    </li>*@
-                                 
-                                    
+                                            USD <span class="arrow_carrot-down"></span>
+                                            <ul>
+                                                <li>EUR</li>
+                                                <li>USD</li>
+                                            </ul>
+                                        </li>*@
+
+
                                     @Html.Partial("_LoginPartial")
                                 </ul>
                             </div>
@@ -116,26 +116,35 @@
                     <nav class="header__menu mobile-menu">
                         <ul>
                             <li @*class="active"*@><a href="@Url.Action("Index","Home")">Home</a></li>
-                            <li><a href="@Url.Action("About","Home")">About</a></li>
-                            <li><a href="#">Shop</a></li>
-                            @*<li>
-                                    <a href="#">Pages</a>
-                                    <ul class="dropdown">
-                                        <li><a href="./shop-details.html">Shop Details</a></li>
-                                        <li><a href="./shoping-cart.html">Shoping Cart</a></li>
-                                        <li><a href="./checkout.html">Check Out</a></li>
-                                        <li><a href="./wisslist.html">Wisslist</a></li>
-                                        <li><a href="./Class.html">Class</a></li>
-                                        <li><a href="./blog-details.html">Blog Details</a></li>
-                                    </ul>
-                                </li>*@
-                            @*<li><a href="./blog.html">Blog</a></li>*@
+                            @*<li><a href="@Url.Action("About","Home")">About</a></li>*@
+                            <li>
+                                <a href="@Url.Action("Index","Products")">Shop</a>
+                                <ul class="dropdown">
+                                    <li><a href="@Url.Action("Index","MovieGenres")">Movie Genres</a></li>
+                                    <li><a href="@Url.Action("Index","MusicGenres")">Music Genres</a></li>
+                                    <li><a href="@Url.Action("Index","Artists")">Artists</a></li>
+                                </ul>
+
+                            </li>
                             <li><a href="@Url.Action("Contact","Home")">Contact</a></li>
+
                             @if (Request.IsAuthenticated && User.IsInRole("Admin"))
                             {
-                                <li>@Html.ActionLink("RolesAdmin", "Index", "RolesAdmin")</li>
-                                <li>@Html.ActionLink("UsersAdmin", "Index", "UsersAdmin")</li>
+                                <li>
+                                    <a href="#">Admin</a>
+                                    <ul class="dropdown">
+                                        <li><a href="@Url.Action("Index","Categories")">Categories</a></li>
+                                        <li><a href="@Url.Action("Index","Status")">Statuses</a></li>
+                                        <li><a href="@Url.Action("Index","Studios")">Studios</a></li>
+                                        <li>@Html.ActionLink("RolesAdmin", "Index", "RolesAdmin")</li>
+                                        <li>@Html.ActionLink("UsersAdmin", "Index", "UsersAdmin")</li>
+                                    </ul>
+                                </li>
                             }
+
+
+
+
                         </ul>
                     </nav>
                 </div>
