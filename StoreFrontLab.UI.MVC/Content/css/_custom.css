@@ -10,3 +10,18 @@ textarea{
 .hero__section{
     margin-bottom:.5em;
 }
+
+#mainContent{
+    width:97%;
+    margin: auto;
+    min-height:95vh;
+    margin-top:1em;
+}
+
+.textBox {
+    margin-bottom: -9px;
+}
+
+.form-group {
+    margin: 2rem 0 4rem;
+}

@@ -93,12 +93,14 @@ namespace StoreFrontLab.DATA.EF//.Metadata
         public int StatusID { get; set; }
 
         [Required(ErrorMessage = "* Price is required")]
+        [DisplayFormat(DataFormatString ="{0:c}")]
         public decimal Price { get; set; }
 
         [Display(Name = "Artist")]
         public Nullable<int> ArtistID { get; set; }
 
         [StringLength(500, ErrorMessage = "* Must not exceed 500 characters")]
+        [UIHint("MultiLineText")]
         public string Description { get; set; }
 
         [Display(Name = "Movie Studio")]
@@ -110,6 +112,7 @@ namespace StoreFrontLab.DATA.EF//.Metadata
         [Display(Name = "Music Genre")]
         public Nullable<int> MusicGenreID { get; set; }
 
+        [Display(Name ="Cover")]
         [StringLength(50, ErrorMessage = "* Must not exceed 50 characters")]
         public string ProductImage { get; set; }
     }

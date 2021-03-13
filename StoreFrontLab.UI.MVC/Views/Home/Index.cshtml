@@ -2,37 +2,40 @@
     ViewBag.Title = "Home Page";
 }
 
-<!-- Hero Section Begin -->
-<section class="hero">
-    <div class="hero__slider owl-carousel">
-        <div class="hero__item set-bg" data-setbg="@Url.Content("~/Content/img/hero/HeroBgd.jpg")">
-            <!-- <span>Photo by <a href="https://unsplash.com/@@blocks?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">blocks</a> on <a href="https://unsplash.com/s/photos/records?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></span>-->
-            <div class="container">
-                <div class="row d-flex justify-content-center">
-                    <div class="col-lg-8">
-                        <div class="hero__text">
-                            <h2>All of your favorite vinyls in one place</h2>
-                            <a href="#" class="primary-btn">Check it out</a>
+@section hero{
+    <!-- Hero Section Begin -->
+    <section class="hero">
+        <div class="hero__slider owl-carousel">
+            <div class="hero__item set-bg" data-setbg="@Url.Content("~/Content/img/hero/HeroBgd.jpg")">
+                <!-- <span>Photo by <a href="https://unsplash.com/@@blocks?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">blocks</a> on <a href="https://unsplash.com/s/photos/records?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></span>-->
+                <div class="container">
+                    <div class="row d-flex justify-content-center">
+                        <div class="col-lg-8">
+                            <div class="hero__text">
+                                <h2>All of your favorite vinyls in one place</h2>
+                                <a href="#" class="primary-btn">Check it out</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="hero__item set-bg" data-setbg="@Url.Content("~/Content/img/hero/heroVCR.jpg")">
+                <div class="container">
+                    <div class="row d-flex justify-content-center">
+                        <div class="col-lg-8">
+                            <div class="hero__text">
+                                <h2>Step into a time machine with one of your favorite classic films</h2>
+                                <a href="#" class="primary-btn">Check it out</a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="hero__item set-bg" data-setbg="@Url.Content("~/Content/img/hero/heroVCR.jpg")">
-            <div class="container">
-                <div class="row d-flex justify-content-center">
-                    <div class="col-lg-8">
-                        <div class="hero__text">
-                            <h2>Step into a time machine with one of your favorite classic films</h2>
-                            <a href="#" class="primary-btn">Check it out</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- Hero Section End -->
+    </section>
+    <!-- Hero Section End -->
+}
+
 <!-- About Section Begin -->
 <section class="about spad">
     <div class="container">
@@ -86,35 +89,35 @@
                     </div>
                 </div>
                 @*<div class="categories__item">
-            <div class="categories__item__icon">
-                <span class="flaticon-034-chocolate-roll"></span>
-                <h5>Butter</h5>
-            </div>
-        </div>
-        <div class="categories__item">
-            <div class="categories__item__icon">
-                <span class="flaticon-005-pancake"></span>
-                <h5>Red Velvet</h5>
-            </div>
-        </div>
-        <div class="categories__item">
-            <div class="categories__item__icon">
-                <span class="flaticon-030-cupcake-2"></span>
-                <h5>Biscuit</h5>
-            </div>
-        </div>
-        <div class="categories__item">
-            <div class="categories__item__icon">
-                <span class="flaticon-006-macarons"></span>
-                <h5>Donut</h5>
-            </div>
-        </div>
-        <div class="categories__item">
-            <div class="categories__item__icon">
-                <span class="flaticon-006-macarons"></span>
-                <h5>Cupcake</h5>
-            </div>
-        </div>*@
+                        <div class="categories__item__icon">
+                            <span class="flaticon-034-chocolate-roll"></span>
+                            <h5>Butter</h5>
+                        </div>
+                    </div>
+                    <div class="categories__item">
+                        <div class="categories__item__icon">
+                            <span class="flaticon-005-pancake"></span>
+                            <h5>Red Velvet</h5>
+                        </div>
+                    </div>
+                    <div class="categories__item">
+                        <div class="categories__item__icon">
+                            <span class="flaticon-030-cupcake-2"></span>
+                            <h5>Biscuit</h5>
+                        </div>
+                    </div>
+                    <div class="categories__item">
+                        <div class="categories__item__icon">
+                            <span class="flaticon-006-macarons"></span>
+                            <h5>Donut</h5>
+                        </div>
+                    </div>
+                    <div class="categories__item">
+                        <div class="categories__item__icon">
+                            <span class="flaticon-006-macarons"></span>
+                            <h5>Cupcake</h5>
+                        </div>
+                    </div>*@
             </div>
         </div>
     </div>

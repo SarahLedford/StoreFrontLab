@@ -123,6 +123,7 @@
                                     <li><a href="@Url.Action("Index","MovieGenres")">Movie Genres</a></li>
                                     <li><a href="@Url.Action("Index","MusicGenres")">Music Genres</a></li>
                                     <li><a href="@Url.Action("Index","Artists")">Artists</a></li>
+                                    <li href="@Url.Action("Index","Products")">View All</li>
                                 </ul>
 
                             </li>
@@ -150,6 +151,7 @@
                 </div>
             </div>
         </div>
+        @RenderSection("hero", false)
     </header>
     <!-- Header Section End -->
 
