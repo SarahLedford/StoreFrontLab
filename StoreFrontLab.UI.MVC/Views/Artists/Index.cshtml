@@ -5,10 +5,13 @@
 }
 
 <h2>@ViewBag.Title</h2>
+@if (User.IsInRole("Admin") || User.IsInRole("Employee"))
+{
+    <p>
+        @Html.ActionLink("Add Artist", "Create")
+    </p>
+}
 
-<p>
-    @Html.ActionLink("Add Artist", "Create")
-</p>
 <table class="table">
     <tr>
         <th>
@@ -17,17 +20,27 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.ArtistName)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ArtistID }) |
-            @Html.ActionLink("More Info", "Details", new { id=item.ArtistID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ArtistID })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ArtistName)
+            </td>
+            <td>
+                @if (User.IsInRole("Employee") || User.IsInRole("Admin"))
+                {
+                    @:@Html.ActionLink("Edit", "Edit", new { id = item.ArtistID }) |
+                }
+                @if (Request.IsAuthenticated)
+                {
+                    @:@Html.ActionLink("More Info", "Details", new { id = item.ArtistID })
+                }
+                @if (User.IsInRole("Admin"))
+                {
+                    @:| @Html.ActionLink("Delete", "Delete", new { id = item.ArtistID })
+                }
+            </td>
+        </tr>
+    }
 
 </table>

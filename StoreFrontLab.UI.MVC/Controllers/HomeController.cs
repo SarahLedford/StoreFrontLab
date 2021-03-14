@@ -22,6 +22,7 @@ namespace StoreFrontLab.UI.MVC.Controllers
             return View();
         }
 
+        [Authorize(Roles ="Admin, Employee, Customer")]
         public ActionResult Contact()
         {
             return View();
@@ -29,6 +30,7 @@ namespace StoreFrontLab.UI.MVC.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin, Employee, Customer")]
         public ActionResult Contact(ContactViewModel cvm)
         {
             if (!ModelState.IsValid)

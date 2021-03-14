@@ -149,12 +149,12 @@ namespace StoreFrontLab.UI.MVC.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new ApplicationUser { UserName = model.FirstName, Email = model.Email };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
                     UserManager.AddToRole(user.Id, "Customer");
-
+                    //user.UserName = model.FirstName;
                     var trySignIn = await SignInManager.PasswordSignInAsync(user.UserName, model.Password, false, false);
 
                     return RedirectToAction("Index", "Home");

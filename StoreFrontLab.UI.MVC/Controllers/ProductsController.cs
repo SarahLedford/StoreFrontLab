@@ -22,6 +22,7 @@ namespace StoreFrontLab.UI.MVC.Controllers
         }
 
         // GET: Products/Details/5
+        [Authorize(Roles ="Admin, Employee, Customer")]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -37,6 +38,7 @@ namespace StoreFrontLab.UI.MVC.Controllers
         }
 
         // GET: Products/Create
+        [Authorize(Roles = "Admin, Employee")]
         public ActionResult Create()
         {
             ViewBag.ArtistID = new SelectList(db.Artists, "ArtistID", "ArtistName");
@@ -53,6 +55,7 @@ namespace StoreFrontLab.UI.MVC.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin, Employee")]
         public ActionResult Create([Bind(Include = "ProdID,ProdName,CategoryID,StatusID,Price,ArtistID,Description,StudioID,MovieGenreID,MusicGenreID,ProductImage")] Product product)
         {
             if (ModelState.IsValid)
@@ -72,6 +75,7 @@ namespace StoreFrontLab.UI.MVC.Controllers
         }
 
         // GET: Products/Edit/5
+        [Authorize(Roles = "Admin, Employee")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -97,6 +101,7 @@ namespace StoreFrontLab.UI.MVC.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin, Employee")]
         public ActionResult Edit([Bind(Include = "ProdID,ProdName,CategoryID,StatusID,Price,ArtistID,Description,StudioID,MovieGenreID,MusicGenreID,ProductImage")] Product product)
         {
             if (ModelState.IsValid)
@@ -115,6 +120,7 @@ namespace StoreFrontLab.UI.MVC.Controllers
         }
 
         // GET: Products/Delete/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -132,6 +138,7 @@ namespace StoreFrontLab.UI.MVC.Controllers
         // POST: Products/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public ActionResult DeleteConfirmed(int id)
         {
             Product product = db.Products.Find(id);

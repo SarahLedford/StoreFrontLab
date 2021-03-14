@@ -20,6 +20,10 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.MovieGenreID }) |
+    @if (User.IsInRole("Admin") || User.IsInRole("Employee"))
+    {
+        @:@Html.ActionLink("Edit", "Edit", new { id = Model.MovieGenreID }) |
+
+    }
     @Html.ActionLink("Back to Movie Genres", "Index")
 </p>

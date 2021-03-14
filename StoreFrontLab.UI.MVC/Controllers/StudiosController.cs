@@ -15,12 +15,14 @@ namespace StoreFrontLab.UI.MVC.Controllers
         private VintageMediaStoreEntities db = new VintageMediaStoreEntities();
 
         // GET: Studios
+        [Authorize(Roles ="Admin, Employee")]
         public ActionResult Index()
         {
             return View(db.Studios.ToList());
         }
 
         // GET: Studios/Details/5
+        [Authorize(Roles = "Admin, Employee")]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -36,6 +38,7 @@ namespace StoreFrontLab.UI.MVC.Controllers
         }
 
         // GET: Studios/Create
+        [Authorize(Roles = "Admin, Employee")]
         public ActionResult Create()
         {
             return View();
@@ -46,6 +49,7 @@ namespace StoreFrontLab.UI.MVC.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin, Employee")]
         public ActionResult Create([Bind(Include = "StudioID,StudioName")] Studio studio)
         {
             if (ModelState.IsValid)
@@ -59,6 +63,7 @@ namespace StoreFrontLab.UI.MVC.Controllers
         }
 
         // GET: Studios/Edit/5
+        [Authorize(Roles = "Admin, Employee")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -78,6 +83,7 @@ namespace StoreFrontLab.UI.MVC.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin, Employee")]
         public ActionResult Edit([Bind(Include = "StudioID,StudioName")] Studio studio)
         {
             if (ModelState.IsValid)
@@ -90,6 +96,7 @@ namespace StoreFrontLab.UI.MVC.Controllers
         }
 
         // GET: Studios/Delete/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -107,6 +114,7 @@ namespace StoreFrontLab.UI.MVC.Controllers
         // POST: Studios/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public ActionResult DeleteConfirmed(int id)
         {
             Studio studio = db.Studios.Find(id);

@@ -5,10 +5,13 @@
 }
 
 <h2>@ViewBag.Title</h2>
-
+@if (User.IsInRole("Admin") || User.IsInRole("Employee"))
+{
 <p>
     @Html.ActionLink("Add a New Product", "Create")
 </p>
+}
+
 <table class="table">
     <tr>
         <th>
@@ -77,9 +80,18 @@
             @Html.DisplayFor(modelItem => item.Studio.StudioName)
         </td>*@
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ProdID }) |
-            @Html.ActionLink("More Info", "Details", new { id=item.ProdID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ProdID })
+            @if (User.IsInRole("Employee") || User.IsInRole("Admin"))
+            {
+                @:@Html.ActionLink("Edit", "Edit", new { id = item.ProdID }) |
+            }
+            @if (Request.IsAuthenticated)
+            {
+                @:@Html.ActionLink("More Info", "Details", new { id = item.ProdID })
+            }
+            @if (User.IsInRole("Admin"))
+            {
+                @:| @Html.ActionLink("Delete", "Delete", new { id = item.ProdID })
+            }
         </td>
     </tr>
 }

@@ -21,6 +21,7 @@ namespace StoreFrontLab.UI.MVC.Controllers
         }
 
         // GET: MovieGenres/Details/5
+        [Authorize(Roles =("Admin, Employee"))]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -36,6 +37,7 @@ namespace StoreFrontLab.UI.MVC.Controllers
         }
 
         // GET: MovieGenres/Create
+        [Authorize(Roles = ("Admin, Employee"))]
         public ActionResult Create()
         {
             return View();
@@ -46,6 +48,7 @@ namespace StoreFrontLab.UI.MVC.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = ("Admin, Employee"))]
         public ActionResult Create([Bind(Include = "MovieGenreID,MovieGenreName")] MovieGenre movieGenre)
         {
             if (ModelState.IsValid)
@@ -59,6 +62,7 @@ namespace StoreFrontLab.UI.MVC.Controllers
         }
 
         // GET: MovieGenres/Edit/5
+        [Authorize(Roles = ("Admin, Employee"))]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -78,6 +82,7 @@ namespace StoreFrontLab.UI.MVC.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = ("Admin, Employee"))]
         public ActionResult Edit([Bind(Include = "MovieGenreID,MovieGenreName")] MovieGenre movieGenre)
         {
             if (ModelState.IsValid)
@@ -90,6 +95,7 @@ namespace StoreFrontLab.UI.MVC.Controllers
         }
 
         // GET: MovieGenres/Delete/5
+        [Authorize(Roles = ("Admin"))]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -107,6 +113,7 @@ namespace StoreFrontLab.UI.MVC.Controllers
         // POST: MovieGenres/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = ("Admin"))]
         public ActionResult DeleteConfirmed(int id)
         {
             MovieGenre movieGenre = db.MovieGenres.Find(id);
