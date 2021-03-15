@@ -31,3 +31,7 @@ textarea{
 .description{
     text-align:justify;
 }
+
+.deleteButton {
+    margin: 0 2.5em .25em 0;
+}
