@@ -5,10 +5,9 @@
 }
 
 <h2>@ViewBag.Title</h2>
-
-<div>
-    <hr />
-    <dl class="dl-horizontal">
+<hr />
+<div class="row">
+    <dl class="dl-horizontal col-md-7">
         <dt>
             @Html.DisplayNameFor(model => model.ProdName)
         </dt>
@@ -29,25 +28,22 @@
             @Html.DisplayNameFor(model => model.Description)
         </dt>
 
-        <dd>
+        <dd class="description">
             @Html.DisplayFor(model => model.Description)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ProductImage)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.ProductImage)
-        </dd>
+        @if (Model.Artist != null)
+        {
+            <dt>
+                @Html.DisplayNameFor(model => model.Artist.ArtistName)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Artist.ArtistName)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Artist.ArtistName)
+            </dd>
+        }
 
-        <dd>
-            @Html.DisplayFor(model => model.Artist.ArtistName)
-        </dd>
 
         <dt>
             @Html.DisplayNameFor(model => model.Category.CategoryName)
@@ -57,21 +53,28 @@
             @Html.DisplayFor(model => model.Category.CategoryName)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.MovieGenre.MovieGenreName)
-        </dt>
+        @if (Model.MovieGenre != null)
+        {
+            <dt>
+                @Html.DisplayNameFor(model => model.MovieGenre.MovieGenreName)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.MovieGenre.MovieGenreName)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.MovieGenre.MovieGenreName)
+            </dd>
+        }
 
-        <dt>
-            @Html.DisplayNameFor(model => model.MusicGenre.MusicGenreName)
-        </dt>
+        @if (Model.MusicGenre != null)
+        {
+            <dt>
+                @Html.DisplayNameFor(model => model.MusicGenre.MusicGenreName)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.MusicGenre.MusicGenreName)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.MusicGenre.MusicGenreName)
+            </dd>
+        }
+
 
         <dt>
             @Html.DisplayNameFor(model => model.Status.StatusName)
@@ -81,16 +84,36 @@
             @Html.DisplayFor(model => model.Status.StatusName)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Studio.StudioName)
-        </dt>
+        @if (Model.Studio != null)
+        {
+            <dt>
+                @Html.DisplayNameFor(model => model.Studio.StudioName)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Studio.StudioName)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Studio.StudioName)
+            </dd>
+        }
+
 
     </dl>
+    <div class="col-md-4 offset-1">
+        <dl>
+            <dt>
+                @*@Html.DisplayNameFor(model => model.ProductImage)*@
+            </dt>
+
+            <dd>
+                <img src="~/Content/img/shop/@Model.ProductImage" alt="@Model.ProductImage" title="@Model.ProductImage" />
+
+                @*@Html.DisplayFor(model => model.ProductImage)*@
+            </dd>
+        </dl>
+    </div>
 </div>
+
+    
+
 <p>
     @if (User.IsInRole("Admin") || User.IsInRole("Employee"))
     {

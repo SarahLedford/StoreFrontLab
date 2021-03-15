@@ -1,6 +1,9 @@
 ﻿body {
 }
 
+h2, h3{
+    margin-bottom:.5em;
+}
 
 textarea{
     min-height: 10em;
@@ -24,4 +27,7 @@ textarea{
 
 .form-group {
     margin: 2rem 0 4rem;
+}
+.description{
+    text-align:justify;
 }

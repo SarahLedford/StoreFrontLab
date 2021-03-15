@@ -55,11 +55,12 @@
         <td>
             @Html.DisplayFor(modelItem => item.Price)
         </td>
-        <td>
+        <td class="description">
             @Html.DisplayFor(modelItem => item.Description)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.ProductImage)
+            <img src="~/Content/img/shop/t_@item.ProductImage" alt="@item.ProdName cover" title="@item.ProdName" />
+            @*@Html.DisplayFor(modelItem => item.ProductImage)*@
         </td>
         @*<td>
             @Html.DisplayFor(modelItem => item.Artist.ArtistName)

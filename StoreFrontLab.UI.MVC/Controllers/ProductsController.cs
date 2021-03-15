@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Drawing;
 using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using StoreFrontLab.DATA.EF;
+using StoreFrontLab.UI.MVC.Utilities;
 
 namespace StoreFrontLab.UI.MVC.Controllers
 {
@@ -22,7 +24,7 @@ namespace StoreFrontLab.UI.MVC.Controllers
         }
 
         // GET: Products/Details/5
-        [Authorize(Roles ="Admin, Employee, Customer")]
+        [Authorize(Roles = "Admin, Employee, Customer")]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -56,10 +58,38 @@ namespace StoreFrontLab.UI.MVC.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Admin, Employee")]
-        public ActionResult Create([Bind(Include = "ProdID,ProdName,CategoryID,StatusID,Price,ArtistID,Description,StudioID,MovieGenreID,MusicGenreID,ProductImage")] Product product)
+        public ActionResult Create([Bind(Include = "ProdID,ProdName,CategoryID,StatusID,Price,ArtistID,Description,StudioID,MovieGenreID,MusicGenreID,ProductImage")] Product product, HttpPostedFileBase productImage)
         {
             if (ModelState.IsValid)
             {
+                #region File Upload
+                string file = "NoImage.png";
+
+                if (productImage != null)
+                {
+                    file = productImage.FileName;
+                    string ext = file.Substring(file.LastIndexOf('.'));
+                    string[] goodExts = { ".jpeg", ".jpg", ".png", ".gif" };
+                    if (goodExts.Contains(ext) && productImage.ContentLength <= 4194304)
+                    {
+                        file = Guid.NewGuid() + ext;
+
+                        #region Resize Image
+                        string savePath = Server.MapPath("~/Content/img/shop/");
+
+                        Image convertedImage = Image.FromStream(productImage.InputStream);
+
+                        int maxImageSize = 500;
+                        int maxThumbSize = 100;
+
+                        ImageService.ResizeImage(savePath, file, convertedImage, maxImageSize, maxThumbSize);
+                        #endregion
+                    }
+                }
+                product.ProductImage = file;
+                #endregion
+
+
                 db.Products.Add(product);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -102,10 +132,50 @@ namespace StoreFrontLab.UI.MVC.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Admin, Employee")]
-        public ActionResult Edit([Bind(Include = "ProdID,ProdName,CategoryID,StatusID,Price,ArtistID,Description,StudioID,MovieGenreID,MusicGenreID,ProductImage")] Product product)
+        public ActionResult Edit([Bind(Include = "ProdID,ProdName,CategoryID,StatusID,Price,ArtistID,Description,StudioID,MovieGenreID,MusicGenreID,ProductImage")] Product product, HttpPostedFileBase productImage)
         {
             if (ModelState.IsValid)
             {
+                #region File Upload
+                string file = product.ProductImage;
+
+                if (productImage != null)
+                {
+                    file = product.ProductImage;
+
+
+                    string ext = file.Substring(file.LastIndexOf('.'));
+
+                    string[] goodExts = { ".jpg", ".jpeg", ".png", ".gif" };
+
+                    if (goodExts.Contains(ext.ToLower()) && productImage.ContentLength <= 4194304)
+                    {
+                        file = Guid.NewGuid() + ext;
+
+                        #region resize image
+                        string savePath = Server.MapPath("~/Content/img/shop/");
+
+                        Image convertedImage = Image.FromStream(productImage.InputStream);
+
+                        int maxImageSize = 500;
+                        int maxThumbSize = 100;
+
+                        ImageService.ResizeImage(savePath, file, convertedImage, maxImageSize, maxThumbSize);
+                        #endregion
+
+                        if (product.ProductImage != null && product.ProductImage != "NoImage.png")
+                        {
+                            ImageService.Delete(savePath, product.ProductImage);
+                        }
+
+                        product.ProductImage = file;
+
+                    }
+                    #endregion
+
+                }
+
+
                 db.Entry(product).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -142,6 +212,10 @@ namespace StoreFrontLab.UI.MVC.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Product product = db.Products.Find(id);
+
+            string path = Server.MapPath("~/Content/img/shop/");
+            ImageService.Delete(path, product.ProductImage);
+
             db.Products.Remove(product);
             db.SaveChanges();
             return RedirectToAction("Index");
