@@ -260,6 +260,8 @@
     <Content Include="Content\img\Laserdisc.png" />
     <Content Include="Content\img\logo.png" />
     <Content Include="Content\img\Record.png" />
+    <Content Include="Content\img\shop\2150cd94-49e8-40a5-9410-5f0b653d4c0d.jpg" />
+    <Content Include="Content\img\shop\b9ba247b-8c8e-42e0-ab5f-0b8f63fb929a.jpg" />
     <Content Include="Content\img\shop\cart\cart-1.jpg" />
     <Content Include="Content\img\shop\cart\cart-2.jpg" />
     <Content Include="Content\img\shop\cart\cart-3.jpg" />
@@ -274,6 +276,7 @@
     <Content Include="Content\img\shop\details\thumb-3.jpg" />
     <Content Include="Content\img\shop\details\thumb-4.jpg" />
     <Content Include="Content\img\shop\details\thumb-5.jpg" />
+    <Content Include="Content\img\shop\e2df6e76-782d-43de-af7c-d100bc0a335d.jpg" />
     <Content Include="Content\img\shop\product-1.jpg" />
     <Content Include="Content\img\shop\product-10.jpg" />
     <Content Include="Content\img\shop\product-11.jpg" />
@@ -286,6 +289,9 @@
     <Content Include="Content\img\shop\product-7.jpg" />
     <Content Include="Content\img\shop\product-8.jpg" />
     <Content Include="Content\img\shop\product-9.jpg" />
+    <Content Include="Content\img\shop\t_2150cd94-49e8-40a5-9410-5f0b653d4c0d.jpg" />
+    <Content Include="Content\img\shop\t_b9ba247b-8c8e-42e0-ab5f-0b8f63fb929a.jpg" />
+    <Content Include="Content\img\shop\t_e2df6e76-782d-43de-af7c-d100bc0a335d.jpg" />
     <Content Include="Content\img\team\team-1.jpg" />
     <Content Include="Content\img\team\team-2.jpg" />
     <Content Include="Content\img\team\team-3.jpg" />

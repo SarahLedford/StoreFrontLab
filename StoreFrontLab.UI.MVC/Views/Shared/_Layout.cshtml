@@ -120,17 +120,21 @@
                             @*<li><a href="@Url.Action("About","Home")">About</a></li>*@
                             <li>
                                 <a href="@Url.Action("Index","Products")">Shop</a>
-                                <ul class="dropdown">
-                                    <li><a href="@Url.Action("Index","MovieGenres")">Movie Genres</a></li>
-                                    <li><a href="@Url.Action("Index","MusicGenres")">Music Genres</a></li>
-                                    <li><a href="@Url.Action("Index","Artists")">Artists</a></li>
+                                @if (User.IsInRole("Employee") || User.IsInRole("Admin"))
+                                {
 
-                                    <li><a href="@Url.Action("Index","Categories")">Categories</a></li>
-                                    <li>
-                                        <a href="@Url.Action("Index","Products")">View All</a>
-                                    </li>
-                                </ul>
 
+                                    <ul class="dropdown">
+                                        <li><a href="@Url.Action("Index","MovieGenres")">Movie Genres</a></li>
+                                        <li><a href="@Url.Action("Index","MusicGenres")">Music Genres</a></li>
+                                        <li><a href="@Url.Action("Index","Artists")">Artists</a></li>
+
+                                        <li><a href="@Url.Action("Index","Categories")">Categories</a></li>
+                                        <li>
+                                            <a href="@Url.Action("Index","Products")">View All</a>
+                                        </li>
+                                    </ul>
+                                }
                             </li>
                             @if (Request.IsAuthenticated)
                             {
@@ -219,7 +223,7 @@
 
 
     @*@Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")*@
+        @Scripts.Render("~/bundles/bootstrap")*@
     <!--jQuery for Datatables.net-->
     <script src="//cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
     @RenderSection("scripts", required: false)

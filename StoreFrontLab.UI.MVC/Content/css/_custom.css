@@ -35,3 +35,8 @@ textarea{
 .deleteButton {
     margin: 0 2.5em .25em 0;
 }
+
+.product__item__pic set-bg{
+    
+    background-image: url(~/Content/img/shop/@product.productImage);
+}
