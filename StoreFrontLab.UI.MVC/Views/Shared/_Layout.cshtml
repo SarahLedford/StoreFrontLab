@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="~/Content/css/nice-select.css" type="text/css">
     <link rel="stylesheet" href="~/Content/css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="~/Content/css/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="//cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css" />
     <link rel="stylesheet" href="~/Content/css/style.css" type="text/css">
     <link rel="stylesheet" href="~/Content/css/_custom.css" type="text/css" />
 </head>
@@ -216,8 +217,11 @@
     <script src="~/Content/js/main.js"></script>
 
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
+
+    @*@Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")*@
+    <!--jQuery for Datatables.net-->
+    <script src="//cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
     @RenderSection("scripts", required: false)
     <script>
         //Highlight Selected Nav
