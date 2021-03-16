@@ -1,4 +1,5 @@
-﻿using StoreFrontLab.UI.MVC.Models;
+﻿using StoreFrontLab.DATA.EF;
+using StoreFrontLab.UI.MVC.Models;
 using System.Net;
 using System.Net.Mail;
 using System.Web.Mvc;
@@ -7,6 +8,8 @@ namespace StoreFrontLab.UI.MVC.Controllers
 {
     public class HomeController : Controller
     {
+        
+
         [HttpGet]
         public ActionResult Index()
         {

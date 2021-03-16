@@ -141,7 +141,7 @@ namespace StoreFrontLab.UI.MVC.Controllers
 
                 if (productImage != null)
                 {
-                    file = product.ProductImage;
+                    file = productImage.FileName;
 
 
                     string ext = file.Substring(file.LastIndexOf('.'));
