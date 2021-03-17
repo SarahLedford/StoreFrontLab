@@ -40,3 +40,8 @@ textarea{
     
     background-image: url(~/Content/img/shop/@product.productImage);
 }
+
+.searchBox {
+    padding-top: 3.5em;
+    padding-left: 5em;
+}

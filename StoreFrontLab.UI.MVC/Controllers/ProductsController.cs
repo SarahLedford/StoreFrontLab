@@ -7,6 +7,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using PagedList;
 using StoreFrontLab.DATA.EF;
 using StoreFrontLab.UI.MVC.Utilities;
 
@@ -17,10 +18,28 @@ namespace StoreFrontLab.UI.MVC.Controllers
         private VintageMediaStoreEntities db = new VintageMediaStoreEntities();
 
         // GET: Products
-        public ActionResult Index()
+        public ActionResult Index(string searchFilter, int page = 1)
         {
-            var products = db.Products.Include(p => p.Artist).Include(p => p.Category).Include(p => p.MovieGenre).Include(p => p.MusicGenre).Include(p => p.Status).Include(p => p.Studio);
-            return View(products.ToList());
+            int pageSize = 5;
+            if (String.IsNullOrEmpty(searchFilter))
+            {
+                var products = db.Products.OrderBy(p => p.ProdName).ToList();
+                return View(products.ToPagedList(page, pageSize));
+            }
+            else
+            {
+                ViewBag.SearchFilter = searchFilter;
+                //if optional search IS used, filter the results by the criteria provided
+                //(compare to first or last name and ignore casing)  
+                var magazines = db.Products.OrderBy(p => p.ProdName).ToList();
+                string searchUpCase = searchFilter.ToUpper();
+
+
+                //v1 LINQ method/lambda syntax
+                List<Product> searchResults = db.Products.Where(x => x.ProdName.ToUpper().Contains(searchUpCase)).ToList();
+
+                return View(searchResults.ToPagedList(page, pageSize));
+            }
         }
 
         // GET: Products/Details/5
