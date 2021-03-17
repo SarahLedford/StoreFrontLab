@@ -18,28 +18,10 @@ namespace StoreFrontLab.UI.MVC.Controllers
         private VintageMediaStoreEntities db = new VintageMediaStoreEntities();
 
         // GET: Products
-        public ActionResult Index(string searchFilter, int page = 1)
+        public ActionResult Index()
         {
-            int pageSize = 5;
-            if (String.IsNullOrEmpty(searchFilter))
-            {
-                var products = db.Products.OrderBy(p => p.ProdName).ToList();
-                return View(products.ToPagedList(page, pageSize));
-            }
-            else
-            {
-                ViewBag.SearchFilter = searchFilter;
-                //if optional search IS used, filter the results by the criteria provided
-                //(compare to first or last name and ignore casing)  
-                var magazines = db.Products.OrderBy(p => p.ProdName).ToList();
-                string searchUpCase = searchFilter.ToUpper();
-
-
-                //v1 LINQ method/lambda syntax
-                List<Product> searchResults = db.Products.Where(x => x.ProdName.ToUpper().Contains(searchUpCase)).ToList();
-
-                return View(searchResults.ToPagedList(page, pageSize));
-            }
+            
+                return View(db.Products.ToList());            
         }
 
         // GET: Products/Details/5
