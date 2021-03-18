@@ -41,8 +41,37 @@
                 <a href="#"><img src="~/Content/img/icon/heart.png" alt=""></a>
             </div>
             <div class="offcanvas__cart__item">
-                <a href="#"><img src="~/Content/img/icon/cart.png" alt=""> <span>0</span></a>
-                <div class="cart__price">Cart: <span>$0.00</span></div>
+                <a href="@Url.Action("Index", "ShoppingCart")">
+                    <img src="~/Content/img/icon/cart.png" alt="" class="cartImg"> <span class="numberOfItems">
+                        @{
+                            int? totalCount = (int?)Session["totalItems"];
+
+                        }
+                        @if (totalCount >= 1)
+                        {
+                            @totalCount
+                        }
+                        else
+                        {
+                            @:0
+                        }
+                    </span>
+                </a>
+                <div class="cart__price">
+                    Cart: <span>
+                        @{
+                            decimal? totalPrice = (decimal?)Session["totalPrice"];
+                        }
+                        @if (totalPrice != null)
+                        {
+                            @(string.Format($"{totalPrice:c}"));
+                        }
+                        else
+                        {
+                            @:$0.00
+                        }
+                    </span>
+                </div>
             </div>
         </div>
         <div class="offcanvas__logo">
@@ -100,8 +129,32 @@
                                     @*<a href="#"><img src="~/Content/img/icon/heart.png" alt=""></a>*@
                                 </div>
                                 <div class="header__top__right__cart">
-                                    <a href="#"><img src="~/Content/img/icon/cart.png" alt=""> <span>0</span></a>
-                                    <div class="cart__price">Cart: <span>$0.00</span></div>
+                                    <a href="@Url.Action("Index", "ShoppingCart")">
+                                        <img src="~/Content/img/icon/cart.png" alt="" class="cartImg"> <span class="numberOfItems">
+                                            @if (totalCount >= 1)
+                                            {
+                                                @totalCount
+                                            }
+                                            else
+                                            {
+                                                @:0
+                                            }
+
+
+                                        </span>
+                                    </a>
+                                    <div class="cart__price">
+                                        Cart: <span>
+                                            @if (totalPrice != null)
+                                            {
+                                                @(string.Format($"{totalPrice:c}"));
+                                            }
+                                            else
+                                            {
+                                                @:$0.00
+                                            }
+                                        </span>
+                                    </div>
                                 </div>
 
 

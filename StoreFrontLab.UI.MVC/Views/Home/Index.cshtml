@@ -70,7 +70,7 @@
                 </div>
                 <div class="categories__item">
                     <div class="categories__item__icon">
-                        <img @*onclick="filter('VHS')"*@ src="~/Content/img/VHStapeNEW.png" />
+                        <img src="~/Content/img/VHStapeNEW.png" />
                     </div>
                 </div>
                 <div class="categories__item">
@@ -161,11 +161,14 @@
 @section scripts{
     @*<script>
         
-        function filter(category) {
-            var className = `.${category}`;
-            $('section.product.spad').not($(className)).hide();
-            console.log(className);
-            }
+        function filter(genre) {
+            $('#bookGrid div.book').each(function () {
+                if (!$(this).hasClass(genre)) {
+                    $(this).hide();
+                }
+            });
+        }
+
        
     </script>*@
     }

@@ -97,6 +97,16 @@
 
 
     </dl>
+    <p>
+        @* Html.BeginForm(action, controller, route values, FormMethod, htmlattributes) *@
+        @using (Html.BeginForm("AddToCart", "Products", new { @prodID = Model.ProdID }, FormMethod.Post, new { @class = "text-center" }))
+        {
+            @Html.HiddenFor(x => x.ProdID)
+            <span class="label">Quantity:</span>
+            @Html.TextBox("Qty", 1, new { @class = "form-control", style = "max-width:50px;display:inline;" })
+            <input type="submit" value="Add to Cart" class="btn btn-info" name="qty" />
+        }
+    </p>
     <div class="col-md-4 offset-1">
         <dl>
             <dt>
@@ -110,6 +120,8 @@
             </dd>
         </dl>
     </div>
+
+
 </div>
 
     

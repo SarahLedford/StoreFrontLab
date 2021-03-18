@@ -9,6 +9,7 @@ using System.Web;
 using System.Web.Mvc;
 using PagedList;
 using StoreFrontLab.DATA.EF;
+using StoreFrontLab.UI.MVC.Models;
 using StoreFrontLab.UI.MVC.Utilities;
 
 namespace StoreFrontLab.UI.MVC.Controllers
@@ -230,5 +231,63 @@ namespace StoreFrontLab.UI.MVC.Controllers
             }
             base.Dispose(disposing);
         }
-    }
-}
+
+
+
+
+        public ActionResult AddToCart(int qty, int prodID)
+        {
+            //Create an empty shell for the LOCAL shopping cart variable
+            Dictionary<int, CartItemViewModel> shoppingCart = null;
+
+            //Check if the session shopping cart exists. If so, use it to populate values into the LOCAL shopping
+            //cart variable
+            if (Session["cart"] != null)
+            {
+                //session cart DOES exist and we need to unbox it
+                shoppingCart = (Dictionary<int, CartItemViewModel>)Session["cart"]; //this is an example of explicit casting
+
+            }
+            else
+            {
+                //if session["cart"] doesn't exist, then we will new up an empty dictionary (initializing the collection)
+                shoppingCart = new Dictionary<int, CartItemViewModel>();
+            }
+
+            //Find the product that the user is adding to their cart
+            Product product = db.Products.Where(p => p.ProdID == prodID).FirstOrDefault();
+
+            if (product == null)
+            {
+                //we got a bad Id. We need to kick them back to the index or some other page to try again
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                //we were able to find a book with the id passed to this method
+                CartItemViewModel item = new CartItemViewModel(qty, product);
+
+                //Put item in the LOCAL shopping cart variable. But if we already have one of the this product in
+                //the cart, then we should just update QUANTITY
+                if (shoppingCart.ContainsKey(product.ProdID))
+                {
+                    shoppingCart[product.ProdID].Qty += qty;
+                }
+                else
+                {
+                    shoppingCart.Add(product.ProdID, item);
+                }
+
+                //now we need to update Session so that we can persist the info in the cart between requests and
+                //repsonse cycles
+                Session["cart"] = shoppingCart; //implicit casting (boxing up - smaller container to a bigger container)
+
+                Session["confirm"] = $"'{product.ProdName}' (Quantity: {qty}) added to cart";
+            }
+
+            //send the user to the index of the shopping cart controller
+            return RedirectToAction("Index", "ShoppingCart");
+        }//end AddToCart
+
+    }//end of class
+}//end of namespace

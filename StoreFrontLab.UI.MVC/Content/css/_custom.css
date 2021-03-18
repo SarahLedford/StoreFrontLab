@@ -45,3 +45,11 @@ textarea{
     padding-top: 3.5em;
     padding-left: 5em;
 }
+
+.cartImg{
+    min-width: 2vw;
+}
+
+.numberOfItems {
+    padding-top: 0.5vw;
+}
