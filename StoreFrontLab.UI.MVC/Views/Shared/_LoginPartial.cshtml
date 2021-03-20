@@ -1,11 +1,20 @@
 ﻿@using Microsoft.AspNet.Identity
+@using StoreFrontLab.DATA.EF;
 @if (Request.IsAuthenticated) {
-    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" })) {
-        @Html.AntiForgeryToken()
+    VintageMediaStoreEntities db = new VintageMediaStoreEntities();
+    string userID = User.Identity.GetUserId();
+    UserDetail currentUser = db.UserDetails.Where(ud => ud.UserID == userID).FirstOrDefault();
+    string userFN = "Guest";
+    if (currentUser != null)
+    {
+        userFN = currentUser.FirstName;        
+    }
 
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" })) {
+        @Html.AntiForgeryToken()       
         <ul class="nav navbar-nav navbar-right">
-            <li style="text-decoration:none; pointer-events:none;">
-                Hey there, @User.Identity.GetUserName()!
+            <li style="text-decoration:none; pointer-events:none; font-weight:bold; color:#CC5500; font-size: 2.5vh;">
+                Hey there, @($"{userFN}")!
                 @*@Html.ActionLink("Hey there, " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })*@
             </li>
             <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>

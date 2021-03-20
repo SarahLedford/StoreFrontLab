@@ -67,10 +67,12 @@ namespace StoreFrontLab.UI.MVC.Models
 
         [Required]
         [Display(Name="First Name")]
+        [MaxLength(15, ErrorMessage ="* Must not exceed 15 characters")]
         public string FirstName { get; set; }
 
         [Required]
         [Display(Name = "Last Name")]
+        [MaxLength(20, ErrorMessage = "* Must not exceed 20 characters")]
         public string LastName { get; set; }
 
         [Required]

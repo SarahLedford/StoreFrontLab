@@ -53,3 +53,11 @@ textarea{
 .numberOfItems {
     padding-top: 0.5vw;
 }
+
+.prodTitleLinks{
+    text-decoration: none;
+    color: black;
+}
+    .prodTitleLinks:hover {
+        color: black;
+    }

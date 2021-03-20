@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using StoreFrontLab.DATA.EF;
 
 namespace StoreFrontLab.UI.MVC.Controllers
 {
@@ -16,7 +17,7 @@ namespace StoreFrontLab.UI.MVC.Controllers
         {
         }
 
-        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
+        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
         {
             UserManager = userManager;
             SignInManager = signInManager;
@@ -153,8 +154,15 @@ namespace StoreFrontLab.UI.MVC.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
+                    #region Custom User Details
+                    UserDetail newUserDetails = new UserDetail() { UserID = user.Id, FirstName = model.FirstName, LastName = model.LastName};
+
+                    VintageMediaStoreEntities db = new VintageMediaStoreEntities();
+                    db.UserDetails.Add(newUserDetails);
+                    db.SaveChanges();
+                    #endregion
+
                     UserManager.AddToRole(user.Id, "Customer");
-                    //user.UserName = model.FirstName;
                     var trySignIn = await SignInManager.PasswordSignInAsync(user.UserName, model.Password, false, false);
 
                     return RedirectToAction("Index", "Home");

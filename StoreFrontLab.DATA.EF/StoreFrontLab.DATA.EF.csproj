@@ -73,6 +73,9 @@
     <Compile Include="Studio.cs">
       <DependentUpon>VintageMediaStoreModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="UserDetail.cs">
+      <DependentUpon>VintageMediaStoreModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="VintageMediaStoreModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

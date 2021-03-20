@@ -70,7 +70,8 @@
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.ProdName)
+                    @Html.ActionLink(item.ProdName, "Details", new { id = item.ProdID }, new { @class="prodTitleLinks"})
+                    @*@Html.DisplayFor(modelItem => item.ProdName)*@
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Price)
@@ -107,7 +108,7 @@
                     }
                     @if (Request.IsAuthenticated)
                     {
-                        @:@Html.ActionLink("More Info", "Details", new { id = item.ProdID })
+                        @*@:@Html.ActionLink("More Info", "Details", new { id = item.ProdID })*@
                     }
                     @if (User.IsInRole("Admin"))
                     {
