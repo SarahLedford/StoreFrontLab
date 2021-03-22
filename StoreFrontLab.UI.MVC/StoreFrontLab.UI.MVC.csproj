@@ -178,6 +178,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ArtistsController.cs" />
     <Compile Include="Controllers\CategoriesController.cs" />
+    <Compile Include="Controllers\ErrorsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MovieGenresController.cs" />
@@ -306,6 +307,7 @@
     <Content Include="Content\img\team\team-4.jpg" />
     <Content Include="Content\img\testimonial\ta-1.jpg" />
     <Content Include="Content\img\testimonial\ta-2.jpg" />
+    <Content Include="Content\img\theflycutout.png" />
     <Content Include="Content\img\VHStape.png" />
     <Content Include="Content\img\VHStapeNEW.png" />
     <Content Include="Content\js\bootstrap.min.js" />
@@ -319,6 +321,7 @@
     <Content Include="Content\js\owl.carousel.min.js" />
     <Content Include="Content\img\shop\NoImage.png" />
     <Content Include="Content\PagedList.css" />
+    <Content Include="Error.html" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\bootstrap.bundle.js" />
@@ -709,6 +712,7 @@
     <Content Include="Views\Products\Edit.cshtml" />
     <Content Include="Views\Products\Index.cshtml" />
     <Content Include="Views\ShoppingCart\Index.cshtml" />
+    <Content Include="Views\Errors\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
