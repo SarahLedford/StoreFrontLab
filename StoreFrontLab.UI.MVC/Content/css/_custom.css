@@ -50,14 +50,20 @@ textarea{
     min-width: 2vw;
 }
 
+
 .numberOfItems {
     padding-top: 0.5vw;
+    min-width: 1.5vw;
+    padding-right: .4vw;
+    text-align:center;
 }
 
-.prodTitleLinks{
+
+.prodTitleLinks {
     text-decoration: none;
     color: black;
 }
     .prodTitleLinks:hover {
         color: black;
+        text-decoration:underline;
     }

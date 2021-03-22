@@ -65,7 +65,8 @@ else
                     }
                 </td>
                 <td>
-                    @item.Value.MediaItem.ProdName
+                    @Html.ActionLink(item.Value.MediaItem.ProdName, "Details", "Products", new { id = item.Key }, new { @class = "prodTitleLinks" })
+                    @*@item.Value.MediaItem.ProdName*@
                 </td>
                 <td>
                     @string.Format($"{item.Value.MediaItem.Price:c}")
@@ -79,7 +80,7 @@ else
                     @string.Format($"{lineTotal:c}")
                 </td>
                 <td>
-                    @Html.ActionLink("Remove from Cart", "RemoveFromCart", "ShoppingCart", new { id = item.Value.MediaItem.ProdID }, null)
+                    @Html.ActionLink("Remove", "RemoveFromCart", "ShoppingCart", new { id = item.Value.MediaItem.ProdID }, null)
                 </td>
             </tr>
         }

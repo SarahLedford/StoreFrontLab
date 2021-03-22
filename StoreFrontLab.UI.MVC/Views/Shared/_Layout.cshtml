@@ -40,16 +40,19 @@
                 <a href="#" class="search-switch"><img src="~/Content/img/icon/search.png" alt=""></a>
                 <a href="#"><img src="~/Content/img/icon/heart.png" alt=""></a>
             </div>
+            @{
+                int? totalCount = (int?)Session["totalItems"];
+
+            }
             <div class="offcanvas__cart__item">
                 <a href="@Url.Action("Index", "ShoppingCart")">
-                    <img src="~/Content/img/icon/cart.png" alt="" class="cartImg"> <span class="numberOfItems">
-                        @{
-                            int? totalCount = (int?)Session["totalItems"];
+                    <img src="~/Content/img/icon/cart.png" alt="" class="cartImg"> 
+                    
+                    <span class="numberOfItems text-center">
 
-                        }
                         @if (totalCount >= 1)
                         {
-                            @totalCount
+                        @totalCount
                         }
                         else
                         {
