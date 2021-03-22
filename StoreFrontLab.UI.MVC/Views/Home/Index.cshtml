@@ -88,36 +88,6 @@
                         <img src="~/Content/img/Laserdisc.png" />
                     </div>
                 </div>
-                @*<div class="categories__item">
-                        <div class="categories__item__icon">
-                            <span class="flaticon-034-chocolate-roll"></span>
-                            <h5>Butter</h5>
-                        </div>
-                    </div>
-                    <div class="categories__item">
-                        <div class="categories__item__icon">
-                            <span class="flaticon-005-pancake"></span>
-                            <h5>Red Velvet</h5>
-                        </div>
-                    </div>
-                    <div class="categories__item">
-                        <div class="categories__item__icon">
-                            <span class="flaticon-030-cupcake-2"></span>
-                            <h5>Biscuit</h5>
-                        </div>
-                    </div>
-                    <div class="categories__item">
-                        <div class="categories__item__icon">
-                            <span class="flaticon-006-macarons"></span>
-                            <h5>Donut</h5>
-                        </div>
-                    </div>
-                    <div class="categories__item">
-                        <div class="categories__item__icon">
-                            <span class="flaticon-006-macarons"></span>
-                            <h5>Cupcake</h5>
-                        </div>
-                    </div>*@
             </div>
         </div>
     </div>
@@ -147,7 +117,7 @@
                             <h6><a href="@Url.Action("Details", "Products", new { id = product.ProdID })">@product.ProdName</a></h6>
                             <div class="product__item__price">@string.Format("{0:c}", product.Price)</div>
                             <div class="cart_add">
-                                <a href="#">Add to cart</a>
+                                <a href="@Url.Action("Details", "Products", new { id = product.ProdID })">Add to cart</a>
                             </div>
                         </div>
                     </div>
