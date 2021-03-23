@@ -25,6 +25,20 @@ namespace StoreFrontLab.UI.MVC.Controllers
                 return View(db.Products.ToList());            
         }
 
+        public ActionResult MovieFilter()
+        {
+            var movies = db.Products.Where(x => x.Category.CategoryName == "VHS" || x.Category.CategoryName == "LaserDisc").ToList();
+
+            return View(movies);
+        }
+
+        public ActionResult VinylFilter()
+        {
+            var vinyls = db.Products.Where(x => x.Category.CategoryName == "Record").ToList();
+
+            return View(vinyls);
+        }
+
         // GET: Products/Details/5
         [Authorize(Roles = "Admin, Employee, Customer")]
         public ActionResult Details(int? id)

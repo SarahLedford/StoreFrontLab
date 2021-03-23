@@ -544,7 +544,7 @@ ol {
   padding: 65px 70px 70px;
   position: relative;
 }
-.hero__text:after {
+/*.hero__text:after {
   position: absolute;
   left: 15px;
   top: 15px;
@@ -553,7 +553,7 @@ ol {
   border: 1px dashed #f08632;
   content: "";
   opacity: 0.3;
-}
+}*/
 .hero__text h2 {
   font-size: 46px;
   color: #111111;

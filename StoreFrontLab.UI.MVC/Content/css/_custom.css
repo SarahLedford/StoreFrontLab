@@ -42,12 +42,13 @@
 .product__item__pic set-bg {
     background-image: url(~/Content/img/shop/@product.productImage);
 }
-
+.heroBtn:hover{
+    color:dimgray;
+}
 /*#endregion */
 
 
 /*#region --------------------------------------Products Styling---------------------------------------- */
-
 textarea {
     min-height: 10em;
     resize: none;

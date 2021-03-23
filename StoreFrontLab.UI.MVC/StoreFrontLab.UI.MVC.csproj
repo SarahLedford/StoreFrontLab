@@ -713,6 +713,8 @@
     <Content Include="Views\Products\Index.cshtml" />
     <Content Include="Views\ShoppingCart\Index.cshtml" />
     <Content Include="Views\Errors\Index.cshtml" />
+    <Content Include="Views\Products\MovieFilter.cshtml" />
+    <Content Include="Views\Products\VinylFilter.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
