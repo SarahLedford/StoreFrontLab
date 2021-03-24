@@ -102,7 +102,7 @@
         {
             @Html.HiddenFor(x => x.ProdID)
             <span class="label">Quantity:</span>
-            @Html.TextBox("Qty", 1, new { @class = "form-control", style = "max-width:50px;display:inline;" })
+            @Html.TextBox("Qty", 1, new { @class = "form-control numberInput", style = "max-width:50px;display:inline;", type="number", min="0", max="100" })
             <input type="submit" value="Add to Cart" class="btn btn-info" name="qty" />
         }
     </div>

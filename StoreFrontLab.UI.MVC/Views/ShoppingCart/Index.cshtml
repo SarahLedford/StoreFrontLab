@@ -54,8 +54,8 @@ else
                 <td>
                     @using (Html.BeginForm("UpdateCart", "ShoppingCart", FormMethod.Post))
                     {
-                        @Html.Hidden("ProdID", item.Value.MediaItem.ProdID) //this is so we can pass to the controller the item the user is updating
-                        @Html.TextBox("qty", item.Value.Qty, new { @class = "form-control", @style = "max-width:50px; display:inline;" })//shows the user the current qty when the page first loads
+                        @Html.Hidden("ProdID", item.Value.MediaItem.ProdID)
+                        @Html.TextBox("qty", item.Value.Qty, new { @class = "form-control numberInput", @style = "max-width:50px; display:inline;", type = "number", min = "0", max = "100" })
                         <input type="submit" value="Update Quantity" class="btn btn-info" />
                     }
 

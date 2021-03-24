@@ -60,7 +60,7 @@
 </section>
 <!-- About Section End -->
 <!-- Categories Section Begin -->
-<div class="categories">
+@*<div class="categories">
     <div class="container">
         <div class="row">
             <div class="categories__slider owl-carousel">
@@ -92,12 +92,17 @@
             </div>
         </div>
     </div>
+</div>*@
+<div class="row featured">
+    <h2 class="col-md-4 featuredCategory">Featured Category</h2>
+    <h2 class="col-md-3 offset-5 text-right featuredCategory">LaserDisc</h2>
 </div>
+
 <!-- Categories Section End -->
 <!-- Product Section Begin -->
 @{
     StoreFrontLab.DATA.EF.VintageMediaStoreEntities db = new StoreFrontLab.DATA.EF.VintageMediaStoreEntities();
-    var featuredProducts = db.Products;
+    var featuredProducts = db.Products.Where(p => p.Category.CategoryName == "LaserDisc");
 
 }
 <section class="product spad">

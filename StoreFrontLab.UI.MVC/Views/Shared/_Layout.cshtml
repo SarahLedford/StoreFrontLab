@@ -111,26 +111,13 @@
                         <div class="header__top__inner">
                             <div class="header__top__left">
                                 <ul>
-                                    @*<li>
-                                            USD <span class="arrow_carrot-down"></span>
-                                            <ul>
-                                                <li>EUR</li>
-                                                <li>USD</li>
-                                            </ul>
-                                        </li>*@
-
-
                                     @Html.Partial("_LoginPartial")
                                 </ul>
                             </div>
                             <div class="header__logo">
-                                <a href="@Url.Action("Index", "Home")"><img src="~/Content/img/88f6b6cd14a44144a3ebfecedec84f3e.png" alt=""></a>
+                                <a href="@Url.Action("Index", "Home")"><img src="~/Content/img/88f6b6cd14a44144a3ebfecedec84f3e.png" alt="Old School Logo"></a>
                             </div>
                             <div class="header__top__right">
-                                <div class="header__top__right__links">
-                                    <a href="#" class="search-switch"><img src="~/Content/img/icon/search.png" alt=""></a>
-                                    @*<a href="#"><img src="~/Content/img/icon/heart.png" alt=""></a>*@
-                                </div>
                                 <div class="header__top__right__cart">
                                     <a href="@Url.Action("Index", "ShoppingCart")">
                                         <img src="~/Content/img/icon/cart.png" alt="" class="cartImg"> <span class="numberOfItems">
