@@ -6,10 +6,24 @@
 <h2>@ViewBag.Title</h2>
 @if (User.IsInRole("Admin") || User.IsInRole("Employee"))
 {
+<p>
+    <a href="@Url.Action("Create", "Products")" class="plus">
+        <i class="fa fa-plus"></i>
+    </a>
+    <a href="@Url.Action("GridProducts", "Products")" class="pull-right toggleGrid">
+        <i class="fa fa-th-large"></i>
+    </a>
+</p>
+}
+else
+{
     <p>
-        @Html.ActionLink("Add a New Product", "Create")
+        <a href="@Url.Action("GridProducts", "Products")" class="pull-right toggleGrid">
+            <i class="fa fa-th-large"></i>
+        </a>
     </p>
 }
+
 <table class="table" id="dataTable">
     <thead>
         <tr>
@@ -36,7 +50,7 @@
         {
             <tr>
                 <td>
-                    @Html.ActionLink(item.ProdName, "Details", new { id = item.ProdID }, new { @class="prodTitleLinks"})
+                    @Html.ActionLink(item.ProdName, "Details", new { id = item.ProdID }, new { @class = "prodTitleLinks" })
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Price)
@@ -53,11 +67,11 @@
                 <td>
                     @if (User.IsInRole("Employee") || User.IsInRole("Admin"))
                     {
-                        @:@Html.ActionLink("Edit", "Edit", new { id = item.ProdID })
+                        <a href="@Url.Action("Edit", new { id = item.ProdID})"><i class="fa fa-pencil"></i></a>
                     }
                     @if (User.IsInRole("Admin"))
                     {
-                        @: | @Html.ActionLink("Delete", "Delete", new { id = item.ProdID })
+                        <a href="@Url.Action("Delete", new { id = item.ProdID})"><i class="fa fa-trash"></i></a>
                     }
                 </td>
             </tr>

@@ -1,0 +1,56 @@
+﻿@model IEnumerable<StoreFrontLab.DATA.EF.Product>
+
+@{
+    ViewBag.Title = "Movies";
+}
+
+<h2>@ViewBag.Title</h2>
+@if (User.IsInRole("Admin") || User.IsInRole("Employee"))
+{
+
+    <p>
+        <a href="@Url.Action("Create", "Products")" class="plus">
+            <i class="fa fa-plus"></i>
+        </a>
+        <a href="@Url.Action("MovieFilter", "Products")" class="pull-right toggleGrid">
+            <i class="fa fa-list"></i>
+        </a>
+    </p>
+}
+else
+{
+    <p>
+        <a href="@Url.Action("MovieFilter", "Products")" class="pull-right toggleGrid">
+            <i class="fa fa-list"></i>
+        </a>
+    </p>
+}
+
+
+
+<section class="product spad">
+    <div class="container">
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <div class="col-lg-3 col-md-6 col-sm-6 @item.Category.CategoryName">
+                    <div class="product__item">
+                        <div class="product__item__pic set-bg" data-setbg="@Url.Content("~/Content/img/shop/" + item.ProductImage)">
+                            <div class="product__label">
+                                <span>@item.Category.CategoryName</span>
+                            </div>
+
+                        </div>
+                        <div class="product__item__text">
+                            <h6><a href="@Url.Action("Details", "Products", new { id = item.ProdID })">@item.ProdName</a></h6>
+                            <div class="product__item__price">@string.Format("{0:c}", item.Price)</div>
+                            <div class="cart_add">
+                                <a href="@Url.Action("Details", "Products", new { id = item.ProdID })">Add to cart</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>

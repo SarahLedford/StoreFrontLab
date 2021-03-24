@@ -220,6 +220,8 @@
     <Content Include="Content\css\owl.carousel.min.css" />
     <Content Include="Content\css\slicknav.min.css" />
     <Content Include="Content\css\style.css" />
+    <Content Include="Content\fonts\1x\outline_view_list_black_24dp.png" />
+    <Content Include="Content\fonts\2x\outline_view_list_black_24dp.png" />
     <Content Include="Content\fonts\ElegantIcons.svg" />
     <Content Include="Content\fonts\Flaticon.svg" />
     <Content Include="Content\fonts\fontawesome-webfont.svg" />
@@ -269,6 +271,7 @@
     <Content Include="Content\img\Laserdisc.png" />
     <Content Include="Content\img\logo.png" />
     <Content Include="Content\img\Record.png" />
+    <Content Include="Content\img\Register.jpg" />
     <Content Include="Content\img\shop\2150cd94-49e8-40a5-9410-5f0b653d4c0d.jpg" />
     <Content Include="Content\img\shop\b9ba247b-8c8e-42e0-ab5f-0b8f63fb929a.jpg" />
     <Content Include="Content\img\shop\cart\cart-1.jpg" />
@@ -403,6 +406,8 @@
     <Content Include="Scripts\umd\popper-utils.min.js" />
     <Content Include="Scripts\umd\popper.js" />
     <Content Include="Scripts\umd\popper.min.js" />
+    <Content Include="_Archive\1x\outline_view_list_black_24dp.png" />
+    <Content Include="_Archive\2x\outline_view_list_black_24dp.png" />
     <Content Include="_Archive\cake-main\about.html" />
     <Content Include="_Archive\cake-main\blog-details.html" />
     <Content Include="_Archive\cake-main\blog.html" />
@@ -715,6 +720,9 @@
     <Content Include="Views\Errors\Index.cshtml" />
     <Content Include="Views\Products\MovieFilter.cshtml" />
     <Content Include="Views\Products\VinylFilter.cshtml" />
+    <Content Include="Views\Products\GridProducts.cshtml" />
+    <Content Include="Views\Products\GridVinylFilter.cshtml" />
+    <Content Include="Views\Products\GridMovieFilter.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

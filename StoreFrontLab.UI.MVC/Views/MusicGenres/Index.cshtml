@@ -32,12 +32,12 @@
                 <td>
                     @if (User.IsInRole("Employee") || User.IsInRole("Admin"))
                     {
-                        @:@Html.ActionLink("Edit", "Edit", new { id = item.MusicGenreID }) |
-                        @:@Html.ActionLink("More Info", "Details", new { id = item.MusicGenreID })
+                        <a href="@Url.Action("Edit", new { id = item.MusicGenreID})"><i class="fa fa-pencil pull-right"></i></a>
                     }
                     @if (User.IsInRole("Admin"))
                     {
-                        @:| @Html.ActionLink("Delete", "Delete", new { id = item.MusicGenreID })
+                        <br/>
+                        <a href="@Url.Action("Delete", new { id = item.MusicGenreID})"><i class="fa fa-trash pull-right"></i></a>
                     }
                 </td>
             </tr>

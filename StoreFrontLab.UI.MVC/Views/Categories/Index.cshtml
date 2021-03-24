@@ -31,12 +31,12 @@
                 <td>
                     @if (User.IsInRole("Employee") || User.IsInRole("Admin"))
                     {
-                        @:@Html.ActionLink("Edit", "Edit", new { id = item.CategoryID }) |
-                        @:@Html.ActionLink("More Info", "Details", new { id = item.CategoryID })
+                        <a href="@Url.Action("Edit", new { id = item.CategoryID})"><i class="fa fa-pencil pull-right"></i></a>
                     }
                     @if (User.IsInRole("Admin"))
                     {
-                        @:| @Html.ActionLink("Delete", "Delete", new { id = item.CategoryID })
+                        <br />
+                        <a href="@Url.Action("Delete", new { id = item.CategoryID})"><i class="fa fa-trash pull-right"></i></a>
                     }
                 </td>
             </tr>

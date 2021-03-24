@@ -25,6 +25,26 @@ namespace StoreFrontLab.UI.MVC.Controllers
                 return View(db.Products.ToList());            
         }
 
+        public ActionResult GridProducts()
+        {
+            var products = db.Products;
+            return View(products.ToList());
+        }
+
+        public ActionResult GridVinylFilter()
+        {
+            var vinyls = db.Products.Where(x => x.Category.CategoryName == "Record").ToList();
+
+            return View(vinyls);
+        }
+
+        public ActionResult GridMovieFilter()
+        {
+            var movies = db.Products.Where(x => x.Category.CategoryName == "VHS" || x.Category.CategoryName == "LaserDisc").OrderBy(x => x.Category.CategoryName).ToList();
+
+            return View(movies);
+        }
+
         public ActionResult MovieFilter()
         {
             var movies = db.Products.Where(x => x.Category.CategoryName == "VHS" || x.Category.CategoryName == "LaserDisc").ToList();

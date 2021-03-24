@@ -1,5 +1,9 @@
 ﻿@import url('https://fonts.googleapis.com/css2?family=Train+One&display=swap');
 
+a {
+    color: black;
+}
+
 h2, h3 {
     margin-bottom: .5em;
 }
@@ -38,6 +42,17 @@ h2, h3 {
 
 /*#endregion */
 
+/*#region ---------------------------Login screen---------------------------------------------*/
+
+.registerRight {
+    margin-left: 5em;
+}
+
+.registerPhoto {
+    box-shadow: inset 0 -3em 3em rgb(0 0 0 / 10%), 0 0 0 2px rgb(255 255 255), 0.3em 0.3em 1em rgb(0 0 0 / 30%);
+}
+
+/*#endregion */
 
 /*#region --------------------------------------Home Index--------------------------------------- */
 
@@ -61,6 +76,7 @@ h2, h3 {
     font-family: 'Train One', cursive;
 }
 /*#endregion */
+
 /*#region --------------------------------------Products Styling---------------------------------------- */
 textarea {
     min-height: 10em;
@@ -83,16 +99,6 @@ textarea {
     margin: 0 2.5em .25em 0;
 }
 
-.prodTitleLinks {
-    text-decoration: none;
-    color: black;
-}
-
-    .prodTitleLinks:hover {
-        color: black;
-        text-decoration: underline;
-    }
-
 .numberInput {
     max-width: 3.75em !important;
 }
@@ -104,8 +110,26 @@ textarea {
         outline: 0;
         box-shadow: none;
     }
-/*#endregion */
 
+.plus {
+    font-size: 2em;
+    color: black
+}
+
+    .plus:hover {
+        color: orange;
+    }
+
+.toggleGrid {
+    color: black;
+    font-size: 2em;
+}
+
+    .toggleGrid:hover {
+        color: orange;
+    }
+
+/*#endregion */
 
 /*#region ---------------------------------Error Messages------------------------------------ */
 .errorImage {
