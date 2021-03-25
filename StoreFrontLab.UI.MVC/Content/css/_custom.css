@@ -113,7 +113,9 @@ textarea {
 
 .plus {
     font-size: 2em;
-    color: black
+    color: black;
+    background: none;
+    border: none;
 }
 
     .plus:hover {

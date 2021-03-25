@@ -304,6 +304,7 @@
     <Content Include="Content\img\shop\t_2150cd94-49e8-40a5-9410-5f0b653d4c0d.jpg" />
     <Content Include="Content\img\shop\t_b9ba247b-8c8e-42e0-ab5f-0b8f63fb929a.jpg" />
     <Content Include="Content\img\shop\t_e2df6e76-782d-43de-af7c-d100bc0a335d.jpg" />
+    <Content Include="Content\img\shop\t_NoImage.png" />
     <Content Include="Content\img\team\team-1.jpg" />
     <Content Include="Content\img\team\team-2.jpg" />
     <Content Include="Content\img\team\team-3.jpg" />
@@ -723,6 +724,7 @@
     <Content Include="Views\Products\GridProducts.cshtml" />
     <Content Include="Views\Products\GridVinylFilter.cshtml" />
     <Content Include="Views\Products\GridMovieFilter.cshtml" />
+    <Content Include="Views\Products\ProductsCreateAjax.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

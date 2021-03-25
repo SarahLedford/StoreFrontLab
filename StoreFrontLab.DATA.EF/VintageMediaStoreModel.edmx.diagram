@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="05585f252f5f4e7395397de067b5be21" Name="Diagram1" ZoomLevel="72">
+      <Diagram DiagramId="05585f252f5f4e7395397de067b5be21" Name="Diagram1" ZoomLevel="108">
         <EntityTypeShape EntityType="VintageMediaStoreModel.Artist" Width="1.5" PointX="0.75" PointY="2.375" IsExpanded="true" />
         <EntityTypeShape EntityType="VintageMediaStoreModel.Category" Width="1.5" PointX="0.75" PointY="5.5" IsExpanded="true" />
         <EntityTypeShape EntityType="VintageMediaStoreModel.MovieGenre" Width="1.5" PointX="0.75" PointY="7.875" IsExpanded="true" />

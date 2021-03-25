@@ -59,6 +59,62 @@ namespace StoreFrontLab.UI.MVC.Controllers
             return View(vinyls);
         }
 
+        [HttpGet]
+        public PartialViewResult ProductsCreateAjax()
+        {
+            ViewBag.CategoryID = new SelectList(db.Categories, "CategoryID", "CategoryName");
+            ViewBag.StatusID = new SelectList(db.Statuses, "StatusID", "StatusName");
+            ViewBag.ArtistID = new SelectList(db.Artists, "ArtistID", "ArtistName");
+            ViewBag.StudioID = new SelectList(db.Studios, "StudioID", "StudioName");
+            ViewBag.MovieGenreID = new SelectList(db.MovieGenres, "MovieGenreID", "MovieGenreName");
+            ViewBag.MusicGenreID = new SelectList(db.MusicGenres, "MusicGenreID", "MusicGenreName");
+            return PartialView();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public JsonResult AjaxCreate(Product product, HttpPostedFileBase productImage)
+        {
+            product.Category = db.Categories.Find(product.CategoryID);
+            if (ModelState.IsValid)
+            {
+                #region File Upload
+                string file = "NoImage.png";
+
+                if (productImage != null)
+                {
+                    file = productImage.FileName;
+                    string ext = file.Substring(file.LastIndexOf('.'));
+                    string[] goodExts = { ".jpeg", ".jpg", ".png", ".gif" };
+                    if (goodExts.Contains(ext.ToLower()) && productImage.ContentLength <= 4194304)
+                    {
+                        file = Guid.NewGuid() + ext;
+
+                        #region Resize Image
+                        string savePath = Server.MapPath("~/Content/img/shop/");
+
+                        Image convertedImage = Image.FromStream(productImage.InputStream);
+
+                        int maxImageSize = 500;
+                        int maxThumbSize = 100;
+
+                        ImageService.ResizeImage(savePath, file, convertedImage, maxImageSize, maxThumbSize);
+                        #endregion
+                    }
+                }
+                product.ProductImage = file;
+
+                #endregion
+
+                db.Products.Add(product);
+                db.SaveChanges();
+
+                //Instead of returning the whole book object and all of its references to other tables, I am returning an object with only the data that is needed. 
+                return Json(new { ProdID = product.ProdID, ProdName = product.ProdName, Price = product.Price, productImage = product.ProductImage, CategoryName = product.Category.CategoryName });
+            }
+            throw new Exception("Model state not valid");
+        }
+
         // GET: Products/Details/5
         [Authorize(Roles = "Admin, Employee, Customer")]
         public ActionResult Details(int? id)

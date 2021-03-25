@@ -21,7 +21,7 @@ namespace StoreFrontLab.UI.MVC
         protected void Application_Error()
         {
             //Response.Redirect(string.Format("~/Shared/Error"));
-            Response.Redirect("~/Error.html");
+           // Response.Redirect("~/Error.html");
         }
     }
 }

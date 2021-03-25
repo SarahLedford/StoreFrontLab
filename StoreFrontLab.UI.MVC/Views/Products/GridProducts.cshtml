@@ -8,9 +8,11 @@
 @if (User.IsInRole("Admin") || User.IsInRole("Employee"))
 {
     <p>
-        <a href="@Url.Action("Create", "Products")" class="plus">
-            <i class="fa fa-plus"></i>
-        </a>
+        @* Button trigger modal *@
+        <button type="button" class="plus fa fa-plus" data-toggle="modal" data-target="#createModal"></button>
+        @*<a href="@Url.Action("Create", "Products")" class="plus">
+                <i class="fa fa-plus"></i>
+            </a>*@
         <a href="@Url.Action("Index", "Products")" class="pull-right toggleGrid">
             <i class="fa fa-list"></i>
         </a>
@@ -29,7 +31,7 @@ else
 
 <section class="product spad">
     <div class="container">
-        <div class="row">
+        <div class="row" id="productGrid">
             @foreach (var item in Model)
             {
                 <div class="col-lg-3 col-md-6 col-sm-6 @item.Category.CategoryName">
@@ -53,3 +55,110 @@ else
         </div>
     </div>
 </section>
+
+<div class="modal fade" id="createModal" tabindex="-1" role="dialog" aria-labelledby="createModal">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel">Add a Product</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>                
+            </div>
+            <div class="modal-body"></div>
+        </div>
+    </div>
+</div>
+
+
+@section scripts{
+    <script>
+        $('#createModal').on('show.bs.modal', function () {
+            //when this event fires, load the partial view that has the create form
+            $(this).find('div.modal-body').load("/Products/ProductsCreateAjax");
+        });
+
+
+        //Books Create - Step 5
+        //when the save button on the create form is clicked run the function below
+        $(document).on("click", "#saveProduct", function (e) {
+            e.preventDefault();
+            $('#MessageContent').html('<div class="alert alert-info">Please Wait.....</div>');
+
+            //The structure of the object being passed to ajax() is different below so that the uploaded file data can be sent
+            $.ajax({
+                url: "/Products/AjaxCreate",
+                type: "POST",
+                data: new FormData(document.getElementById('ProductCreateForm')),
+                cache: false,
+                contentType: false,
+                processData: false,
+                error: function (e) {
+                    $("#MessageContent").html("<div class='alert alert-danger'>There was a problem!</div>");
+                },
+                success: function (data) {
+                    $("#MessageContent").html("<div class='alert alert-success'>Record added!</div>");
+                    $('#createModal').modal('hide');
+                    $(function () {
+                        console.log(data);
+
+                        //document.getElementById('bookUpload').onchange = function (event) {
+
+                        //};
+                        //Build the string that will be used for the ID attribute on the image tag for the new book. Doing this in a variable because it will be used multiple times below.
+                        var imageID = data.ProdID + "-uploadedImage";
+
+                        //Build the HTML to display another card on the page with the new book info
+                        //Note formatting was done manually
+                        var card =
+                            '<div class="col-lg-3 col-md-6 col-sm-6 ' + data.CategoryName + '">' +
+                            '<div class="product__item">' +
+                            '<div class="product__item__pic" id="' + imageID + '">' +
+                            '<div class="product__label">' +
+                            '<span>' + data.CategoryName + '</span>' +
+                            '</div>' +
+                            '</div>' +
+                            '<div class="product__item__text">' +
+                            '<h6><a href="~/Products/Details/"' + data.ProdID + '">' + data.ProdName +
+                            '</a></h6>' +
+                            '<div class="product__item__price">' + data.Price + '</div>' +
+                            '<div class="cart_add">' +
+                            '<a href="~/Products/Details/"' + data.ProdID + '">Add to cart</a>' +
+                            '</div>' +
+                            '</div >' +
+                            '</div >' +
+                            '</div >';
+
+                        //append new card onto the end of the element with all other cards in it
+                        $('#productGrid').append(card);
+
+                        //displaying the uploaded image without a page reload
+
+                        //go to the input type=file and get the uploaded file from the properties file which is a collection of uploaded elements
+                        var files = document.getElementById('productUpload').files;
+
+                        //Check if there is support for FileReader in the browser, make sure the files variable is not null, and files has elements in it
+                        if (FileReader && files && files.length) {
+                            //create a new instance of a FileReader object
+                            var fr = new FileReader();
+
+                            //Once that FileReader object is generated, go grab the element where you want to display the image and set it equal to the result of the FileReader. This tells the FileReader obj where to output the result of any file read operation.
+                            //The FileReader class is one built into JS and allows you to read a file from the users machine using JS. It is typically used to read data from <input type="file">
+                            fr.onload = function () {
+                                $("#" + imageID).css("background-image", fr.result);
+                               // document.getElementById(imageID).attr("data-setbg", fr.result);
+                            };
+                            //The method below is used to get the data from the file that was uploaded
+                            //once the data is read it will input the image into the target specified on the line above inside of the fr.onload function.
+                            fr.readAsDataURL(files[0]);
+                        } else {
+                            //if there is not FileReader support or no file was uploaded, display the NoImage.png
+                            document.getElementById(imageID).src = "~/Content/img/shop/NoImage.png";
+                        }
+
+                        //reset the form - doing this last because we needed the info about the file that was uploaded into the input type=file
+                        $("#ProductCreateForm")[0].reset();
+                    });//end of build & append card functionality
+                }//end success property
+            });//end ajax form submission properties
+        });//end form submit handler
+    </script>
+}
