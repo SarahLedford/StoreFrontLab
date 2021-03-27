@@ -13,8 +13,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap"
           rel="stylesheet">
     <!-- Css Styles -->
-    @RenderSection("css", required: false)
-    <link rel="stylesheet" href="~/Content/css/bootstrap.min.css" type="text/css">
+    @Styles.Render("~/Content/css")
+    @*<link rel="stylesheet" href="~/Content/css/bootstrap.min.css" type="text/css">
     <link rel="stylesheet" href="~/Content/css/flaticon.css" type="text/css">
     <link rel="stylesheet" href="~/Content/css/barfiller.css" type="text/css">
     <link rel="stylesheet" href="~/Content/css/magnific-popup.css" type="text/css">
@@ -22,10 +22,13 @@
     <link rel="stylesheet" href="~/Content/css/elegant-icons.css" type="text/css">
     <link rel="stylesheet" href="~/Content/css/nice-select.css" type="text/css">
     <link rel="stylesheet" href="~/Content/css/owl.carousel.min.css" type="text/css">
-    <link rel="stylesheet" href="~/Content/css/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="~/Content/css/slicknav.min.css" type="text/css">*@
+
+
     <link rel="stylesheet" href="//cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css" />
-    <link href="~/Content/PagedList.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/ui-lightness/jquery-ui.css">
+
+    <!-- Custom CSS -->
     <link rel="stylesheet" href="~/Content/css/style.css" type="text/css">
     <link rel="stylesheet" href="~/Content/css/_custom.css" type="text/css" />
 </head>
@@ -259,8 +262,9 @@
     </div>
     <!-- Search End -->
     <!-- Js Plugins -->
-    @RenderSection("js", required: false)
-    <script src="~/Content/js/jquery-3.3.1.min.js"></script>
+    @Scripts.Render("~/bundles/template")
+
+    @*<script src="~/Content/js/jquery-3.3.1.min.js"></script>
     <script src="~/Content/js/bootstrap.min.js"></script>
     <script src="~/Content/js/jquery.nice-select.min.js"></script>
     <script src="~/Content/js/jquery.barfiller.js"></script>
@@ -268,16 +272,12 @@
     <script src="~/Content/js/jquery.slicknav.js"></script>
     <script src="~/Content/js/owl.carousel.min.js"></script>
     <script src="~/Content/js/jquery.nicescroll.min.js"></script>
-    <script src="~/Content/js/main.js"></script>
+    <script src="~/Content/js/main.js"></script>*@
 
-
-
-    @*@Scripts.Render("~/bundles/jquery")
-        @Scripts.Render("~/bundles/bootstrap")*@
     <!--jQuery for Datatables.net-->
     <script src="//cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
 
-    <!--ADDEDjQuery UI CDN-->
+    <!--ADDED jQuery UI CDN-->
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
     <!-- ADDED jQuery Ajax CDN-->
