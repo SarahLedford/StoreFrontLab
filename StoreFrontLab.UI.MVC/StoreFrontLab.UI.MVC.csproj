@@ -725,6 +725,9 @@
     <Content Include="Views\Products\GridVinylFilter.cshtml" />
     <Content Include="Views\Products\GridMovieFilter.cshtml" />
     <Content Include="Views\Products\ProductsCreateAjax.cshtml" />
+    <Content Include="Views\Studios\StudioDetails.cshtml" />
+    <Content Include="Views\Studios\StudioCreate.cshtml" />
+    <Content Include="Views\Studios\StudioEdit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

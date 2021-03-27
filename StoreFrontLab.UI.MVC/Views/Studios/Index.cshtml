@@ -8,36 +8,44 @@
 @if (User.IsInRole("Admin") || User.IsInRole("Employee"))
 {
     <p>
-        @Html.ActionLink("Add a New Studio", "Create")
+        <button id="toggleStudioCreate" class="plus"><i class="fa fa-plus"></i></button>
     </p>
 }
 
-<table class="table" id="dataTable">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.StudioName)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
+
+@* Partial View for create will be rendered here *@
+<div id="StudioCreate">
+    @Html.Partial("StudioCreate", new StoreFrontLab.DATA.EF.Studio())
+</div>
+<table class="table" id="StudiosTable">
+    @*<thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.StudioName)
+                </th>
+                <th></th>
+            </tr>
+        </thead>*@
 
     <tbody>
         @foreach (var item in Model)
         {
-            <tr>
+            <tr id="Studio-@item.StudioID">
                 <td>
                     @Html.DisplayFor(modelItem => item.StudioName)
                 </td>
                 <td>
                     @if (User.IsInRole("Employee") || User.IsInRole("Admin"))
                     {
-                        <a href="@Url.Action("Edit", new { id = item.StudioID})"><i class="fa fa-pencil pull-right"></i></a>
+                        <a href="" class="DetailsLink" id="@item.StudioID"><i class="fa fa-info-circle pull-right"></i></a>
+                        <br />
+                        <a href="" class="EditLink" id="@item.StudioID"><i class="fa fa-pencil pull-right"></i></a>
                     }
                     @if (User.IsInRole("Admin"))
                     {
                         <br />
-                        <a href="@Url.Action("Delete", new { id = item.StudioID})"><i class="fa fa-trash pull-right"></i></a>
+                        @*<a href="@Url.Action("Delete", new { id = item.StudioID})"><i class="fa fa-trash pull-right"></i></a>*@
+                        @Ajax.ActionLink(" ", "AjaxDelete", new { id = item.StudioID }, new AjaxOptions { HttpMethod = "POST", Confirm = $"Are you sure you want to permanently delete {item.StudioName} from Studios?", OnSuccess = "deleteConfirmed", OnFailure = "deleteFailed" }, new { @class = "fa fa-trash pull-right" })
                     }
                 </td>
             </tr>
@@ -45,10 +53,139 @@
     </tbody>
 
 </table>
+
+<div id="StudioDetails"></div>
+
 @section scripts{
     <script>
         $(document).ready(function () {
             $('#dataTable').DataTable();
         });
+
+        function deleteConfirmed(response, status, data) {
+            //remove the row from the table
+            var rowId = "#Studio-" + response.id;
+            $('#StudiosTable').find(rowId).remove();
+
+            //show a status message (part of AJAX's response message property)
+            $('#MessageContent').html("<div class='alert alert-success'>" + response.message + "</div>");
+        }
+
+        //Delete failed function
+        function deleteFailed(response, status, data) {
+            //show the status message
+            $('#MessageContent').html("<div class='alert alert-danger'>Delete unsuccessful. Is this studio referenced by a movie? If so, change the movie's studio or delete the movie.</div>");
+        }
+
+        //function to handle clicking on details of any record
+        $('a.DetailsLink').click(function (e) {
+            e.preventDefault(); //prevents the default behavior of the browser (reloading the page)
+
+            $('#StudioDetails').data('sId', $(this).attr('id')).dialog({
+                width: 200,
+                height: 200,
+                open: function () {
+                    var studioID = $(this).data('sId');
+                    $(this).load("/Studios/StudioDetails/" + studioID);
+                },
+                title: "Studio Details",
+                modal: true,
+                resizable: false
+            });
+        });
+
+        //Create function - showing the form
+        $('#StudioCreate').hide(); //makes sure the form is hidden on page load
+        $('#toggleStudioCreate').click(function () {
+            $('#StudioCreate').toggle(); // toggles whether the form is seen or not
+        });
+
+        //Process create data
+        $('#StudioCreateForm').submit(function (e) {
+            var formData = $(this).serializeArray(); //takes the form data (which is in an array) and turns it into JSON data
+            e.preventDefault();
+
+            $.ajax({
+                url: "/Studios/AjaxCreate",
+                type: "POST",
+                data: formData,
+                dataType: "json",
+                error: function (e) {
+                    $('#MessageContent').html("<div class='alert alert-danger'>Danger, Will Robinson -- there was problem!</div>");
+                },
+                success: function (e) {
+                    $('#MessageContent').html("<div class='alert alert-success'>Studio added!</div>");
+                    $('#StudioCreateForm')[0].reset(); //resets the form to pristine (untouched) condition
+                    $(function () {
+                        var row =
+                            '<tr>' +
+                            '<td class="col-md-4">' + e.StudioName + '</td>' +
+                            '<td>Refresh to view options</td>' +
+                            '</tr>';
+                        $('#StudiosTable').append(row);//adds to the end of the table
+                    });//end add row
+                }//end of success function
+            });//end of ajax submit
+        });//end of event submit
+
+        //Update/Edit data
+        var originalContent = null;
+        $('a.EditLink').click(function (e) {
+            e.preventDefault(); // stops browser from refreshing the page!
+            var studioID = $(this).attr('id');
+
+            var row = $('#Studio-' + studioID).children();
+
+            originalContent = {
+                StudioId: studioID,
+                StudioName: row[0].innerText
+            };
+
+            $.get("/Studios/StudioEdit/" + studioID, function (data) {
+                $("#Studio-" + studioID).replaceWith(
+                    '<tr id="Studio-' + studioID + '"><td colspan="5">' + data + '</td></tr>'
+                );
+            })
+        });
+
+        //post the updates/make the row look "normal" again
+        $(document).on('click', '#saveUpdate', function () {
+            var formData = $('#StudioEditForm').serializeArray(); // changing it to json data
+
+            $('#MessageContent').html('<div class="alert alert-info">Please Wait...</div>');
+
+            $.ajax({
+                url: "/Studios/AjaxEdit",
+                type: "POST",
+                data: formData,
+                dataType: "json",
+                success: function (e) {
+                    //changes the message to the user
+                    $('#MessageContent').html('<div class="alert alert-success">The studio has been updated!</div>');
+                    $('#StudioEditForm')[0].reset();
+
+                    $(function () {
+                        var row =
+                            '<tr>' +
+                            '<td class="col-md-4">' + e.StudioName + '</td>' +
+                            '<td>Refresh to view options</td>' +
+                            '</tr>';
+                        $('#Studio-' + e.StudioID).replaceWith(row);
+                    });//end of build and replace row
+                },//end of success prop function
+                error: function (e) {
+                    $('#MessageContent').html('<div class="alert alert-warning">There was an error. Please try again or contact your site administrator.</div>');
+                    $(function () {
+                        var row =
+                            '<tr>' +
+                            '<td class="col-md-4">' + originalContent.StudioName + '</td>' +
+                            '<td>Refresh to view options</td>' +
+                            '</tr>';
+                        $('#Studio-' + originalContent.StudioID).replaceWith(row);
+                    });//end of build and replace error row
+                }//end of error function prop
+            });//end of ajax function
+        });//end of event handler
+
     </script>
 }

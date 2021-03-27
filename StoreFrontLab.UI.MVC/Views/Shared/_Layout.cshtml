@@ -25,6 +25,7 @@
     <link rel="stylesheet" href="~/Content/css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="//cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css" />
     <link href="~/Content/PagedList.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/ui-lightness/jquery-ui.css">
     <link rel="stylesheet" href="~/Content/css/style.css" type="text/css">
     <link rel="stylesheet" href="~/Content/css/_custom.css" type="text/css" />
 </head>
@@ -47,13 +48,13 @@
             }
             <div class="offcanvas__cart__item">
                 <a href="@Url.Action("Index", "ShoppingCart")">
-                    <img src="~/Content/img/icon/cart.png" alt="" class="cartImg"> 
-                    
+                    <img src="~/Content/img/icon/cart.png" alt="" class="cartImg">
+
                     <span class="numberOfItems text-center">
 
                         @if (totalCount >= 1)
                         {
-                        @totalCount
+                            @totalCount
                         }
                         else
                         {
@@ -275,6 +276,13 @@
         @Scripts.Render("~/bundles/bootstrap")*@
     <!--jQuery for Datatables.net-->
     <script src="//cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+
+    <!--ADDEDjQuery UI CDN-->
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+    <!-- ADDED jQuery Ajax CDN-->
+    <script src="https://cdn.jsdelivr.net/jquery.ajax.unobtrusive/3.2.4/jquery.unobtrusive-ajax.min.js"></script>
+
     @RenderSection("scripts", required: false)
     <script>
         //Highlight Selected Nav
