@@ -8,11 +8,15 @@
 @if (User.IsInRole("Admin") || User.IsInRole("Employee"))
 {
     <p>
-        @Html.ActionLink("Add Category", "Create")
+        <button id="toggleCategoryCreate" class="plus"><i class="fa fa-plus"></i></button>
     </p>
 }
 
-<table class="table" id="dataTable">
+
+    <div id="CategoryCreate">
+        @Html.Partial("CategoryCreate", new StoreFrontLab.DATA.EF.Category())
+    </div>
+<table class="table" id="CategoriesTable">
     <thead>
         <tr>
             <th>
@@ -24,19 +28,22 @@
     <tbody>
         @foreach (var item in Model)
         {
-            <tr>
+            <tr id="Category-@item.CategoryID">
                 <td>
                     @Html.DisplayFor(modelItem => item.CategoryName)
                 </td>
                 <td>
                     @if (User.IsInRole("Employee") || User.IsInRole("Admin"))
                     {
-                        <a href="@Url.Action("Edit", new { id = item.CategoryID})"><i class="fa fa-pencil pull-right"></i></a>
+                        <a href="" class="DetailsLink" id="@item.CategoryID"><i class="fa fa-info-circle pull-right"></i></a>
+
+                        <br />
+                        <a href="" class="EditLink" id="@item.CategoryID"><i class="fa fa-pencil pull-right"></i></a>
                     }
                     @if (User.IsInRole("Admin"))
                     {
                         <br />
-                        <a href="@Url.Action("Delete", new { id = item.CategoryID})"><i class="fa fa-trash pull-right"></i></a>
+                        @Ajax.ActionLink(" ", "AjaxDelete", new { id = item.CategoryID }, new AjaxOptions { HttpMethod = "POST", Confirm = $"Are you sure you want to permanently delete {item.CategoryName} from Categories?", OnSuccess = "deleteConfirmed", OnFailure = "deleteFailed" }, new { @class = "fa fa-trash pull-right" })
                     }
                 </td>
             </tr>
@@ -44,10 +51,139 @@
     </tbody>
 
 </table>
+
+<div id="CategoryDetails"></div>
+
 @section scripts{
     <script>
-        $(document).ready(function () {
-            $('#dataTable').DataTable();
+        //$(document).ready(function () {
+        //    $('#dataTable').DataTable();
+        //});
+
+        function deleteConfirmed(response, status, data) {
+            //remove the row from the table
+            var rowId = "#Category-" + response.id;
+            $('#CategoriesTable').find(rowId).remove();
+
+            //show a status message (part of AJAX's response message property)
+            $('#MessageContent').html("<div class='alert alert-success'>" + response.message + "</div>");
+        }
+
+        //Delete failed function
+        function deleteFailed(response, status, data) {
+            //show the status message
+            $('#MessageContent').html("<div class='alert alert-danger'>Delete unsuccessful. Is this category referenced by a movie? If so, change the movie's category or delete the movie.</div>");
+        }
+
+        //function to handle clicking on details of any record
+        $('a.DetailsLink').click(function (e) {
+            e.preventDefault(); //prevents the default behavior of the browser (reloading the page)
+
+            $('#CategoryDetails').data('cId', $(this).attr('id')).dialog({
+                width: 200,
+                height: 200,
+                open: function () {
+                    var categoryID = $(this).data('cId');
+                    $(this).load("/Categories/CategoryDetails/" + categoryID);
+                },
+                title: "Category Details",
+                modal: true,
+                resizable: false
+            });
         });
+
+        //Create function - showing the form
+        $('#CategoryCreate').hide(); //makes sure the form is hidden on page load
+        $('#toggleCategoryCreate').click(function () {
+            $('#CategoryCreate').toggle(); // toggles whether the form is seen or not
+        });
+
+        //Process create data
+        $('#CategoryCreateForm').submit(function (e) {
+            var formData = $(this).serializeArray(); //takes the form data (which is in an array) and turns it into JSON data
+            e.preventDefault();
+
+            $.ajax({
+                url: "/Categories/AjaxCreate",
+                type: "POST",
+                data: formData,
+                dataType: "json",
+                error: function (e) {
+                    $('#MessageContent').html("<div class='alert alert-danger'>Danger, Will Robinson -- there was problem!</div>");
+                },
+                success: function (e) {
+                    $('#MessageContent').html("<div class='alert alert-success'>Category added!</div>");
+                    $('#CategoryCreateForm')[0].reset(); //resets the form to pristine (untouched) condition
+                    $(function () {
+                        var row =
+                            '<tr>' +
+                            '<td class="col-md-4">' + e.CategoryName + '</td>' +
+                            '<td>Refresh to view options</td>' +
+                            '</tr>';
+                        $('#CategoriesTable').append(row);//adds to the end of the table
+                    });//end add row
+                }//end of success function
+            });//end of ajax submit
+        });//end of event submit
+
+
+        //Update/Edit data
+        var originalContent = null;
+        $('a.EditLink').click(function (e) {
+            e.preventDefault(); // stops browser from refreshing the page!
+            var categoryID = $(this).attr('id');
+
+            var row = $('#Category-' + categoryID).children();
+
+            originalContent = {
+                CategoryId: categoryID,
+                CategoryName: row[0].innerText
+            };
+
+            $.get("/Categories/CategoryEdit/" + categoryID, function (data) {
+                $("#Category-" + categoryID).replaceWith(
+                    '<tr id="Category-' + categoryID + '"><td colspan="5">' + data + '</td></tr>'
+                );
+            })
+        });
+
+        //post the updates/make the row look "normal" again
+        $(document).on('click', '#saveUpdate', function () {
+            var formData = $('#CategoryEditForm').serializeArray(); // changing it to json data
+
+            $('#MessageContent').html('<div class="alert alert-info">Please Wait...</div>');
+
+            $.ajax({
+                url: "/Categories/AjaxEdit",
+                type: "POST",
+                data: formData,
+                dataType: "json",
+                success: function (e) {
+                    //changes the message to the user
+                    $('#MessageContent').html('<div class="alert alert-success">The category has been updated!</div>');
+                    $('#CategoryEditForm')[0].reset();
+
+                    $(function () {
+                        var row =
+                            '<tr>' +
+                            '<td class="col-md-4">' + e.CategoryName + '</td>' +
+                            '<td>Refresh to view options</td>' +
+                            '</tr>';
+                        $('#Category-' + e.CategoryID).replaceWith(row);
+                    });//end of build and replace row
+                },//end of success prop function
+                error: function (e) {
+                    $('#MessageContent').html('<div class="alert alert-warning">There was an error. Please try again or contact your site administrator.</div>');
+                    $(function () {
+                        var row =
+                            '<tr>' +
+                            '<td class="col-md-4">' + originalContent.CategoryName + '</td>' +
+                            '<td>Refresh to view options</td>' +
+                            '</tr>';
+                        $('#Category-' + originalContent.CategoryID).replaceWith(row);
+                    });//end of build and replace error row
+                }//end of error function prop
+            });//end of ajax function
+        });//end of event handler
     </script>
 }

@@ -728,6 +728,9 @@
     <Content Include="Views\Studios\StudioDetails.cshtml" />
     <Content Include="Views\Studios\StudioCreate.cshtml" />
     <Content Include="Views\Studios\StudioEdit.cshtml" />
+    <Content Include="Views\Categories\CategoryDetails.cshtml" />
+    <Content Include="Views\Categories\CategoryCreate.cshtml" />
+    <Content Include="Views\Categories\CategoryEdit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
