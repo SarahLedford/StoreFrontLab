@@ -126,6 +126,7 @@ namespace StoreFrontLab.UI.MVC.Controllers
 
         //---------------------------------------AJAX------------------------------------------------
         //*****************************************************DELETE***********************************************************//
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public JsonResult AjaxDelete(int id)
         {
@@ -149,7 +150,7 @@ namespace StoreFrontLab.UI.MVC.Controllers
 
         //*****************************************************CREATE********************************************************************//
         //No need for a [get] b/c called partial view and passed empty studio object from studio index view
-
+        [Authorize(Roles = "Admin, Employee")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public JsonResult AjaxCreate(Category cat)
@@ -161,13 +162,14 @@ namespace StoreFrontLab.UI.MVC.Controllers
 
         //*****************************************************EDIT********************************************************************//
         //get a partial view for a studio edit with AJAX display
+        [Authorize(Roles = "Admin, Employee")]
         [HttpGet]
         public PartialViewResult CategoryEdit(int id)
         {
             Category cat = db.Categories.Find(id);
             return PartialView(cat);
         }
-
+        [Authorize(Roles = "Admin, Employee")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public JsonResult AjaxEdit(Category cat)

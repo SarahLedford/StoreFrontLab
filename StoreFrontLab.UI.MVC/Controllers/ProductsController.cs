@@ -59,6 +59,7 @@ namespace StoreFrontLab.UI.MVC.Controllers
             return View(vinyls);
         }
 
+        [Authorize(Roles = "Admin, Employee")]
         [HttpGet]
         public PartialViewResult ProductsCreateAjax()
         {
@@ -71,6 +72,7 @@ namespace StoreFrontLab.UI.MVC.Controllers
             return PartialView();
         }
 
+        [Authorize(Roles = "Admin, Employee")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public JsonResult AjaxCreate(Product product, HttpPostedFileBase productImage)
