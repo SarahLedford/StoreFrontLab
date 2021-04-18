@@ -203,6 +203,9 @@
     <Compile Include="Utilities\ImageService.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="android-chrome-192x192.png" />
+    <Content Include="android-chrome-512x512.png" />
+    <Content Include="apple-touch-icon.png" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-reboot.css" />
@@ -326,6 +329,8 @@
     <Content Include="Content\img\shop\NoImage.png" />
     <Content Include="Content\PagedList.css" />
     <Content Include="Error.html" />
+    <Content Include="favicon-16x16.png" />
+    <Content Include="favicon-32x32.png" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\bootstrap.bundle.js" />
@@ -409,6 +414,9 @@
     <Content Include="Scripts\umd\popper.min.js" />
     <Content Include="_Archive\1x\outline_view_list_black_24dp.png" />
     <Content Include="_Archive\2x\outline_view_list_black_24dp.png" />
+    <Content Include="_Archive\android-chrome-192x192.png" />
+    <Content Include="_Archive\android-chrome-512x512.png" />
+    <Content Include="_Archive\apple-touch-icon.png" />
     <Content Include="_Archive\cake-main\about.html" />
     <Content Include="_Archive\cake-main\blog-details.html" />
     <Content Include="_Archive\cake-main\blog.html" />
@@ -571,6 +579,9 @@
     <Content Include="Content\bootstrap-reboot.css.map" />
     <Content Include="Content\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-grid.css.map" />
+    <Content Include="_Archive\favicon-16x16.png" />
+    <Content Include="_Archive\favicon-32x32.png" />
+    <Content Include="_Archive\favicon.ico" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />

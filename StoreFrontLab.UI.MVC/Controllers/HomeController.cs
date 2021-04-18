@@ -55,7 +55,7 @@ namespace StoreFrontLab.UI.MVC.Controllers
 
             SmtpClient client = new SmtpClient("mail.sarahledford.com");
 
-            client.Credentials = new NetworkCredential("admin@sarahledford.com", "aKmS2FhiQp_");
+            client.Credentials = new NetworkCredential("admin@sarahledford.com", "***");
 
             try
             {
